@@ -7,7 +7,7 @@
     
     <meta property="og:title" content="ZEE STORE - Official Link & Script">
     <meta property="og:description" content="Akses script eksklusif, menu modding, dan hubungi admin di sini!">
-    <meta property="og:image" content="https://zeestore02.github.io/anime.jpg">
+    <meta property="og:image" content="https://zeestore02.github.io/anime1.jpg">
     <meta property="og:url" content="https://zeestore02.github.io/">
     <meta property="og:type" content="website">
     
@@ -83,7 +83,8 @@
             width: 80%;
             display: flex;
             flex-direction: column;
-            gap: 50px;
+            gap: 15px;
+            margin-top: 150px;
         }
 
         .link-card {
@@ -110,16 +111,6 @@
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
             transform: translateY(-3px);
         }
-
-                /* Daftar Kartu Menu (Link List) */
-        .link-list {
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 150px;
-        }
-
 
         .link-icon {
             font-size: 1.2rem;
@@ -169,7 +160,7 @@
         .modal-content p {
             font-size: 0.8rem;
             color: #b0c4de;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .modal-btn {
@@ -182,6 +173,7 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 0.85rem;
+            margin-bottom: 8px; /* Jarak antar tombol di dalam pop-up */
             transition: 0.2s;
         }
 
@@ -201,7 +193,6 @@
             cursor: pointer;
         }
 
-        /* Footer kecil */
         .footer {
             margin-top: 30px;
             font-size: 0.6rem;
@@ -224,15 +215,15 @@
         <div class="link-list">
             <div class="link-card" onclick="openModal('scriptModal')">
                 <div class="link-left">
-                    <span class="link-icon">⚡        </span>
-                    <span>SCRIPT V2.0</span>
+                    <span class="link-icon">⚡</span>
+                    <span>SCRIPT BY ZEE</span>
                 </div>
                 <span>➔</span>
             </div>
 
             <div class="link-card" onclick="openModal('ggModal')">
                 <div class="link-left">
-                    <span class="link-icon">🎮          </span>
+                    <span class="link-icon">🎮</span>
                     <span>GG x ZEE STORE</span>
                 </div>
                 <span>➔</span>
@@ -240,7 +231,7 @@
 
             <div class="link-card" onclick="openModal('waModal')">
                 <div class="link-left">
-                    <span class="link-icon">💬          </span>
+                    <span class="link-icon">💬</span>
                     <span>WHATSAPP ADMIN</span>
                 </div>
                 <span>➔</span>
@@ -248,7 +239,7 @@
 
             <div class="link-card" onclick="openModal('ytModal')">
                 <div class="link-left">
-                    <span class="link-icon">▶️          </span>
+                    <span class="link-icon">▶️</span>
                     <span>YOUTUBE CHANNEL</span>
                 </div>
                 <span>➔</span>
@@ -260,23 +251,26 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL 1: SCRIPT -->
+    <!-- POP-UP MODAL 1: SCRIPT (Dibuat ada 2 Pilihan Tombol) -->
     <div id="scriptModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('scriptModal')">&times;</button>
-            <h3>SCRIPT V2.0</h3>
+            <h3>SCRIPT BY ZEE</h3>
             <p>Silakan klik tombol di bawah untuk mengakses file script eksklusif kami.</p>
-            <a href="https://move2link.co/Scriptku" class="modal-btn" target="_blank">BUKA SCRIPT</a>
+            <a href="https://move2link.co/Scriptku" class="modal-btn" target="_blank">SCRIPT MLBB V2.0</a>
+            <a href="https://move2link.co/Encryptionv10" class="modal-btn" target="_blank">SCRIPT ENCRYPTION</a>
         </div>
     </div>
 
-    <!-- POP-UP MODAL 2: GG x ZEE STORE -->
+    <!-- POP-UP MODAL 2: GG x ZEE STORE (Dibuat ada 2 Pilihan Tombol) -->
     <div id="ggModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('ggModal')">&times;</button>
             <h3>GG x ZEE STORE</h3>
-            <p>Akses tautan khusus game modding dan alat pendukung di sini.</p>
-            <a href="https://move2link.co/GGxZeeStore" class="modal-btn" target="_blank">MENU GG</a>
+            <p>Pilih menu modding eksklusif di bawah ini:</p>
+            <a href="https://move2link.co/GGxZeeStore" class="modal-btn" target="_blank">GAME GUARDIAN MOD</a>
+            <a href="https://move2link.co/Originalgg" class="modal-btn" target="_blank">GAME GUARDIAN ORI</a>
+            <a href="https://gameguardian.net/forum/files/file/2-gameguardian/?do=download&confirm=1&csrfKey=34ed0c4a68e3fc48bc4844567a291481" class="modal-btn" target="_blank">SITUS RESMI GAME GUARDIAN</a>
         </div>
     </div>
 
@@ -309,7 +303,6 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Tutup modal jika mengklik area luar kotak pop-up
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
