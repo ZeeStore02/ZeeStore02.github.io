@@ -12,6 +12,10 @@
     <meta property="og:type" content="website">
     
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background: linear-gradient(rgba(3, 7, 18, 0.3), rgba(3, 7, 18, 0.4)), 
                         url('anime1.jpg') no-repeat center center fixed;
@@ -42,7 +46,6 @@
             margin-top: 20px;
         }
 
-                /* Kontributor pembungkus agar posisi teks dan avatar sejajar */
         .avatar-container {
             position: relative;
             width: 90px;
@@ -50,26 +53,19 @@
             margin: 0 auto 12px auto;
         }
 
-        /* Avatar hanya berisi gambar dan animasi denyut */
         .avatar {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             border: 2px solid #00f0ff;
-            
-            /* Mengatur gambar latar belakang lingkaran */
             background: url('anime.jpg') no-repeat center center;
             background-size: cover;
-            
             position: absolute;
             top: 0;
             left: 0;
-            
-            /* Menjalankan animasi berdenyut hanya pada gambar/bingkai */
             animation: pulseGlow 2s infinite ease-in-out;
         }
 
-        /* Efek gelap transparan di atas gambar */
         .avatar::after {
             content: '';
             position: absolute;
@@ -81,7 +77,6 @@
             border-radius: 50%;
         }
 
-        /* Teks ZS dipisah di luar animasi agar TIDAK IKUT BERDENYUT */
         .avatar-text {
             position: absolute;
             top: 50%;
@@ -95,22 +90,20 @@
             letter-spacing: 1px;
         }
 
-        /* Animasi Berdenyut */
         @keyframes pulseGlow {
             0% {
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+                box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+                border-color: rgba(0, 240, 255, 0.6);
             }
             50% {
-                transform: scale(1.05);
                 box-shadow: 0 0 25px rgba(0, 240, 255, 0.9);
+                border-color: rgba(0, 240, 255, 1);
             }
             100% {
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+                box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+                border-color: rgba(0, 240, 255, 0.6);
             }
         }
-
 
         .profile-section h1 {
             font-size: 1.2rem;
@@ -128,7 +121,7 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.9);
         }
 
-        /* Daftar Kartu Menu (Link List) */
+        /* Daftar Kartu Menu */
         .link-list {
             width: 80%;
             display: flex;
@@ -172,21 +165,17 @@
             font-size: 1.2rem;
         }
 
-        /* Modal / Pop-up yang Elegan */
-                /* Modal / Pop-up yang Elegan */
+        /* Modal / Pop-up (Diposisikan mutlak di luar kontainer utama) */
         .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            padding: 15px; /* Beri jarak aman dari pinggir layar HP */
+            z-index: 9999;
         }
 
         .modal-content {
@@ -195,17 +184,21 @@
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
             border-radius: 16px;
             padding: 22px 18px;
-            width: 85%;            /* Membuatnya pas dan tidak terlalu mentok ke pinggir */
-            max-width: 300px;      /* Batas maksimal lebar kotak */
+            
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            width: 85%;
+            max-width: 290px;
             text-align: center;
-            position: relative;
             animation: modalPop 0.3s ease-out;
         }
 
-
         @keyframes modalPop {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
 
         .modal-content h3 {
@@ -262,7 +255,7 @@
 <body>
 
     <div class="container">
-                <!-- Bagian Profil -->
+        <!-- Bagian Profil -->
         <div class="profile-section">
             <div class="avatar-container">
                 <div class="avatar"></div>
@@ -271,7 +264,6 @@
             <h1>ZEE STORE</h1>
             <p>🇮🇩 OFFICIAL STORE</p>
         </div>
-
 
         <!-- Daftar Menu / Kartu Link -->
         <div class="link-list">
@@ -313,7 +305,8 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL 1: SCRIPT -->
+    <!-- SEMUA POP-UP MODAL DITARO DI LUAR CONTAINER UTAMA (DI BAWAH INI) -->
+    
     <div id="scriptModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('scriptModal')">&times;</button>
@@ -324,7 +317,6 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL 2: GG x ZEE STORE -->
     <div id="ggModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('ggModal')">&times;</button>
@@ -336,7 +328,6 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL 3: WHATSAPP -->
     <div id="waModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('waModal')">&times;</button>
@@ -346,7 +337,6 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL 4: YOUTUBE -->
     <div id="ytModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('ytModal')">&times;</button>
@@ -358,7 +348,7 @@
 
     <script>
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
+            document.getElementById(modalId).style.display = 'block';
         }
 
         function closeModal(modalId) {
@@ -366,8 +356,11 @@
         }
 
         window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
+            let modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target === modals[i]) {
+                    modals[i].style.display = 'none';
+                }
             }
         }
     </script>
