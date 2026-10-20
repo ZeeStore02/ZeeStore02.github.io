@@ -47,19 +47,46 @@
         }
 
         .avatar {
-            width: 85px;
-            height: 85px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: 2px solid #00f0ff;
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+            margin: 0 auto 12px auto;
+            
+            /* Mengatur gambar latar belakang lingkaran (pastikan file anime.jpg ada di folder yang sama) */
+            background: url('anime.jpg') no-repeat center center;
+            background-size: cover;
+            
+            /* Mengatur posisi agar teks di dalamnya berada tepat di tengah */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 12px auto;
-            background: rgba(3, 15, 30, 0.8);
-            font-weight: bold;
-            font-size: 1.3rem;
+            position: relative;
+        }
+
+        /* Efek gelap transparan tipis di atas gambar agar teks lebih terbaca */
+        .avatar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Gaya untuk teks inisial di atas gambar */
+        .avatar-text {
+            position: relative;
+            z-index: 2;
+            font-weight: 800;
+            font-size: 1.5rem;
             color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.9);
+            letter-spacing: 1px;
         }
 
         .profile-section h1 {
@@ -110,6 +137,12 @@
             border-color: #00f0ff;
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
             transform: translateY(-3px);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .link-icon {
@@ -173,7 +206,7 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 0.85rem;
-            margin-bottom: 8px; /* Jarak antar tombol di dalam pop-up */
+            margin-bottom: 8px;
             transition: 0.2s;
         }
 
@@ -204,9 +237,11 @@
 <body>
 
     <div class="container">
-        <!-- Bagian Profil -->
+        <!-- Bagian Profil (Hanya ada 1 di sini) -->
         <div class="profile-section">
-            <div class="avatar">ZS</div>
+            <div class="avatar">
+                <span class="avatar-text">ZS</span>
+            </div>
             <h1>ZEE STORE</h1>
             <p>🇮🇩 OFFICIAL STORE</p>
         </div>
@@ -251,18 +286,18 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL 1: SCRIPT (Dibuat ada 2 Pilihan Tombol) -->
+    <!-- POP-UP MODAL 1: SCRIPT -->
     <div id="scriptModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('scriptModal')">&times;</button>
             <h3>SCRIPT BY ZEE</h3>
             <p>Silakan klik tombol di bawah untuk mengakses file script eksklusif kami.</p>
-            <a href="https://move2link.co/ScriptZee" class="modal-btn" target="_blank">SCRIPT MLBB V2.0</a>
+            <a href="https://move2link.co/Scriptku" class="modal-btn" target="_blank">SCRIPT MLBB V2.0</a>
             <a href="https://move2link.co/Encryptionv10" class="modal-btn" target="_blank">SCRIPT ENCRYPTION</a>
         </div>
     </div>
 
-    <!-- POP-UP MODAL 2: GG x ZEE STORE (Dibuat ada 2 Pilihan Tombol) -->
+    <!-- POP-UP MODAL 2: GG x ZEE STORE -->
     <div id="ggModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('ggModal')">&times;</button>
