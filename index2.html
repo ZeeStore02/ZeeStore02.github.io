@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEE STORE - Panduan & FAQ</title>
+    <meta name="theme-color" content="#000000">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #030712;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .app {
+            max-width: 900px;
+            margin: auto;
+            padding: 18px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(3, 15, 30, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: white;
+            padding: 15px 22px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 5px 20px rgba(0, 240, 255, 0.15);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            text-decoration: none;
+        }
+
+        .back-btn {
+            background: rgba(0, 240, 255, 0.2);
+            border: 1px solid #00f0ff;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+        }
+
+        /* SECTION UTAMA */
+        .section-box {
+            background: rgba(3, 15, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section-box h2 {
+            color: #00f0ff;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ACCORDION FAQ */
+        .faq-item {
+            background: rgba(3, 7, 18, 0.7);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-question {
+            padding: 15px 18px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .faq-question:hover {
+            color: #00f0ff;
+        }
+
+        .faq-answer {
+            padding: 0 18px 15px 18px;
+            font-size: 14px;
+            color: #b0c4de;
+            line-height: 1.5;
+            display: none;
+        }
+
+        /* STEP BY STEP TUTORIAL */
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .step-card {
+            background: rgba(3, 7, 18, 0.7);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px 18px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: rgba(0, 240, 255, 0.2);
+            border: 1px solid #00f0ff;
+            color: #00f0ff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .step-content p {
+            color: #b0c4de;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <span>⚡</span> ZEE STORE
+        </a>
+        <a href="index.html" class="back-btn">⬅ Kembali ke Beranda</a>
+    </header>
+
+    <!-- PANDUAN INSTALASI -->
+    <div class="section-box">
+        <h2>📖 Panduan Cara Penggunaan</h2>
+        <div class="step-list">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Download Script / APK</h4>
+                    <p>Pilih menu yang Anda inginkan di halaman utama, lalu klik tombol akses atau unduh file melalui tautan yang disediakan.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Gunakan GameGuardian / Virtual</h4>
+                    <p>Bagi pengguna script atau aplikasi modding, pastikan perangkat Anda telah mendukung aplikasi pendukung seperti Virtual atau GameGuardian versi terbaru dari Zee Store.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Hubungi Admin Jika Kendala</h4>
+                    <p>Jika mengalami kendala link error atau butuh bantuan lebih lanjut, jangan ragu untuk langsung menghubungi admin melalui WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ (PERTANYAAN UMUM) -->
+    <div class="section-box">
+        <h2>❓ Pertanyaan yang Sering Diajukan (FAQ)</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Apakah script di Zee Store aman digunakan?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">
+                Semua script dan file di Zee Store sudah diuji terlebih dahulu untuk meminimalkan risiko. Namun, tetap disarankan menggunakan akun cadangan untuk keamanan maksimal.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Bagaimana cara mengatasi link download yang melewati iklan?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">
+                Tunggu beberapa detik pada halaman iklan penengah, lalu cari tombol "Continue" atau "Skip" di pojok kanan atas/bawah hingga Anda diarahkan ke file tujuan utama.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Kapan pembaruan (update) script terbaru dirilis?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">
+                Pembaruan biasanya dirilis mengikuti patch terbaru game atau ketika ada pemeliharaan sistem. Pantau terus channel YouTube dan grup WhatsApp admin untuk info terupdate.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 ZEE STORE. All Rights Reserved.
+    </div>
+
+</div>
+
+<script>
+    // Fungsi untuk membuka/menutup jawaban FAQ secara interaktif
+    function toggleFaq(element) {
+        const answer = element.nextElementSibling;
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            element.querySelector("span:last-child").textContent = "▼";
+        } else {
+            answer.style.display = "block";
+            element.querySelector("span:last-child").textContent = "▲";
+        }
+    }
+</script>
+
+</body>
+</html>
