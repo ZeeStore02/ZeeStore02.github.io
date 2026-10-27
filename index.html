@@ -108,7 +108,7 @@
             overflow: hidden;
             background: 
                 linear-gradient(rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.85)), 
-                url('mata.mp4') no-repeat center center;
+                url('anime1.jpg') no-repeat center center;
             background-size: cover;
             border: 1px solid rgba(0, 240, 255, 0.3);
         }
@@ -154,13 +154,20 @@
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
         }
 
-        .hero-icon-right {
+        /* STYLE UNTUK VIDEO DI HERO SECTION */
+        .hero-video-right {
             position: absolute;
-            right: 30px;
-            bottom: 20px;
-            font-size: 130px;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.5));
+            right: 20px;
+            bottom: 50%;
+            transform: translateY(50%);
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            opacity: 0.9;
+            z-index: 2;
         }
 
         /* MAIN CONTENT */
@@ -501,8 +508,8 @@
             .car-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .hero-icon-right {
-                opacity: 0.3;
+            .hero-video-right {
+                opacity: 0.4; /* Agar tidak terlalu menutupi teks di layar HP kecil */
             }
         }
 
@@ -562,7 +569,12 @@
                 Jelajahi Menu ➜
             </button>
         </div>
-        <div class="hero-icon-right">☣️</div>
+        
+        <!-- VIDEO PENGGANTI GAMBAR/IKON -->
+        <video class="hero-video-right" autoplay muted loop playsinline>
+            <source src="mata.mp4" type="video/mp4">
+            Browser Anda tidak Mendukung Pemutaran Video.
+        </video>
     </section>
 
     <!-- MAIN CONTENT -->
