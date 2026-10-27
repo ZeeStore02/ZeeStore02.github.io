@@ -56,9 +56,17 @@
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
-        .logo-icon {
-            font-size: 26px;
+        /* Animasi Berputar */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
+
+        .logo-icon {
+            display: inline-block; /* Wajib ada agar transform bisa bekerja pada emoji/teks */
+            animation: spin 3s linear infinite; /* 3s adalah kecepatan putaran, bisa diubah (misal: 2s lebih cepat, 5s lebih lambat) */
+        }
+
 
         .nav-links {
             display: flex;
