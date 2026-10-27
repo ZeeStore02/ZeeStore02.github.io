@@ -889,32 +889,25 @@
         cards.forEach(card => grid.appendChild(card));
     }
 
-async function bayarQRIS() {
+// Arahkan Pembeli ke Saweria ZeeStore02
+function bayarQRIS() {
     const amount = document.getElementById("nominalPaket").value;
-    document.getElementById("qrisResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memuat QRIS Duitku...</p>";
+    
+    // Buka halaman pembayaran Saweria di tab baru
+    window.open(`https://saweria.co/ZeeStore02`, '_blank');
 
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/create-qris', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ amount: amount })
-        });
-        const data = await res.json();
-
-        if (data.success && data.paymentUrl) {
-            const qrImageApi = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(data.paymentUrl)}`;
-            document.getElementById("qrisResult").innerHTML = `
-                <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin-top:8px;">Scan QRIS di bawah ini:</p>
-                <img src="${qrImageApi}" width="160" height="160" style="border:2px solid #00f0ff; border-radius:10px; margin:8px 0; background:#fff; padding:5px;"><br>
-                <a href="${data.paymentUrl}" target="_blank" class="modal-btn" style="display:inline-block; font-size:11px; padding:6px 12px; margin-top:4px; text-decoration:none;">BAYAR LANGSUNG ➔</a>
-            `;
-        } else {
-            alert("Gagal memuat QRIS: " + (data.message || "Error"));
-        }
-    } catch (e) {
-        alert("Gagal terhubung ke server backend.");
-    }
+    document.getElementById("qrisResult").innerHTML = `
+        <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 10px; border-radius: 8px; margin-top: 10px; text-align: left;">
+            <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin:0 0 5px 0;">Langkah Pembayaran Saweria:</p>
+            <ol style="font-size:10px; color:#b0c4de; margin:0; padding-left:15px;">
+                <li>Ketik nominal sesuai paket (contoh: <b>10000</b>).</li>
+                <li>Bayar via QRIS / E-Wallet di web Saweria.</li>
+                <li>Token premium otomatis aktif & masuk ke database setelah bayar lunas!</li>
+            </ol>
+        </div>
+    `;
 }
+
 
 async function klaimFree() {
     if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
