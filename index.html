@@ -97,7 +97,7 @@
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION DENGAN BACKGROUND VIDEO */
         .hero {
             margin-top: 15px;
             min-height: 290px;
@@ -106,16 +106,35 @@
             color: white;
             position: relative;
             overflow: hidden;
-            background: 
-                linear-gradient(rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.85)), 
-                url('anime1.jpg') no-repeat center center;
-            background-size: cover;
+            background: #030712;
             border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        /* VIDEO BACKGROUND HERO */
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* OVERLAY GELAP AGAR TEKS TETAP TERBACA */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(3, 7, 18, 0.75), rgba(3, 7, 18, 0.9));
+            z-index: 2;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             max-width: 450px;
         }
 
@@ -152,22 +171,6 @@
         .btn:hover {
             background: rgba(0, 240, 255, 0.5);
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
-        }
-
-        /* STYLE UNTUK VIDEO DI HERO SECTION */
-        .hero-video-right {
-            position: absolute;
-            right: 20px;
-            bottom: 50%;
-            transform: translateY(50%);
-            width: 180px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 240, 255, 0.4);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-            opacity: 0.9;
-            z-index: 2;
         }
 
         /* MAIN CONTENT */
@@ -509,7 +512,7 @@
                 grid-template-columns: 1fr 1fr;
             }
             .hero-video-right {
-                opacity: 0.4; /* Agar tidak terlalu menutupi teks di layar HP kecil */
+                opacity: 0.4;
             }
         }
 
@@ -555,8 +558,16 @@
         <div class="user">ZS</div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION DENGAN VIDEO BACKGROUND -->
     <section class="hero">
+        <!-- Video Latar Belakang -->
+        <video class="hero-bg-video" autoplay muted loop playsinline>
+            <source src="mata.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video.
+        </video>
+        <!-- Efek Gelap Transparan di Atas Video -->
+        <div class="hero-overlay"></div>
+
         <div class="hero-content">
             <h2>
                 Unlock Your<br>
@@ -570,10 +581,9 @@
             </button>
         </div>
         
-        <!-- VIDEO PENGGANTI GAMBAR/IKON -->
+        <!-- Video tambahan di sebelah kanan jika masih ingin dipertahankan -->
         <video class="hero-video-right" autoplay muted loop playsinline>
             <source src="mata.mp4" type="video/mp4">
-            Browser Anda tidak Mendukung Pemutaran Video.
         </video>
     </section>
 
