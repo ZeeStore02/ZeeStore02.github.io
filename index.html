@@ -889,59 +889,60 @@
         cards.forEach(card => grid.appendChild(card));
     }
 
-    // Request QRIS Duitku
-    async function bayarQRIS() {
-        const amount = document.getElementById("nominalPaket").value;
-        document.getElementById("qrisResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memuat QRIS Duitku...</p>";
+// Request QRIS Duitku
+async function bayarQRIS() {
+    const amount = document.getElementById("nominalPaket").value;
+    document.getElementById("qrisResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memuat QRIS Duitku...</p>";
 
-        try {
-            const res = await fetch('/api/create-qris', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ amount: amount })
-            });
-            const data = await res.json();
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/create-qris', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ amount: amount })
+        });
+        const data = await res.json();
 
-            if (data.success) {
-                document.getElementById("qrisResult").innerHTML = `
-                    <p style="color:#00f0ff; font-weight:bold; font-size:11px;">Scan QRIS ini untuk bayar:</p>
-                    <img src="${data.qr_url}" width="160" style="border:2px solid #00f0ff; border-radius:10px; margin:8px 0;">
-                    <p style="font-size:10px; color:#b0c4de;">Token otomatis tersimpan di Database setelah bayar lunas!</p>
-                `;
-            } else {
-                alert("Gagal memuat QRIS: " + data.message);
-            }
-        } catch (e) {
-            alert("Gagal terhubung ke server backend.");
+        if (data.success) {
+            document.getElementById("qrisResult").innerHTML = `
+                <p style="color:#00f0ff; font-weight:bold; font-size:11px;">Scan QRIS ini untuk bayar:</p>
+                <img src="${data.qr_url}" width="160" style="border:2px solid #00f0ff; border-radius:10px; margin:8px 0;">
+                <p style="font-size:10px; color:#b0c4de;">Token otomatis tersimpan di Database setelah bayar lunas!</p>
+            `;
+        } else {
+            alert("Gagal memuat QRIS: " + data.message);
         }
+    } catch (e) {
+        alert("Gagal terhubung ke server backend.");
     }
+}
 
-    // Request Klaim Token Free
-    async function klaimFree() {
-        if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
-        document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
+// Request Klaim Token Free
+async function klaimFree() {
+    if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
+    document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
 
-        try {
-            const res = await fetch('/api/claim-free', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ deviceId: currentDeviceId })
-            });
-            const data = await res.json();
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/claim-free', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ deviceId: currentDeviceId })
+        });
+        const data = await res.json();
 
-            if (data.success) {
-                document.getElementById("freeResult").innerHTML = `
-                    <p style="color:#00ff66; font-weight:bold; font-size:12px;">Klaim Sukses!</p>
-                    <p style="font-size:12px;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
-                    <p style="font-size:10px; color:#b0c4de;">Aktif s/d: ${data.expired}</p>
-                `;
-            } else {
-                document.getElementById("freeResult").innerHTML = `<p style="color:#ff4444; font-size:11px;">${data.message}</p>`;
-            }
-        } catch (e) {
-            alert("Gagal terhubung ke server backend.");
+        if (data.success) {
+            document.getElementById("freeResult").innerHTML = `
+                <p style="color:#00ff66; font-weight:bold; font-size:12px;">Klaim Sukses!</p>
+                <p style="font-size:12px;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
+                <p style="font-size:10px; color:#b0c4de;">Aktif s/d: ${data.expired}</p>
+            `;
+        } else {
+            document.getElementById("freeResult").innerHTML = `<p style="color:#ff4444; font-size:11px;">${data.message}</p>`;
         }
+    } catch (e) {
+        alert("Gagal terhubung ke server backend.");
     }
+}
+
 </script>
 
 </body>
