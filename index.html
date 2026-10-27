@@ -889,23 +889,56 @@
         cards.forEach(card => grid.appendChild(card));
     }
 
-// Arahkan Pembeli ke Saweria ZeeStore02
 function bayarQRIS() {
-    const amount = document.getElementById("nominalPaket").value;
-    
-    // Buka halaman pembayaran Saweria di tab baru
-    window.open(`https://saweria.co/ZeeStore02`, '_blank');
-
     document.getElementById("qrisResult").innerHTML = `
-        <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 10px; border-radius: 8px; margin-top: 10px; text-align: left;">
-            <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin:0 0 5px 0;">Langkah Pembayaran Saweria:</p>
-            <ol style="font-size:10px; color:#b0c4de; margin:0; padding-left:15px;">
-                <li>Ketik nominal sesuai paket (contoh: <b>10000</b>).</li>
-                <li>Bayar via QRIS / E-Wallet di web Saweria.</li>
-                <li>Token premium otomatis aktif & masuk ke database setelah bayar lunas!</li>
-            </ol>
+        <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 12px; border-radius: 8px; margin-top: 10px;">
+            <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin-bottom:6px;">1. Masukkan Nama Pembeli:</p>
+            <input type="text" id="buyerInput" placeholder="Contoh: ZeeUser" style="width:90%; padding:6px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-size:11px; text-align:center;">
+            
+            <p style="color:#b0c4de; font-size:10px; margin:8px 0 4px 0;">2. Klik Bayar & Pakai Nama Yang Sama di Saweria:</p>
+            <button onclick="bukaSaweria()" class="modal-btn" style="padding:5px 10px; font-size:11px;">BAYAR SEKARANG ➔</button>
+            
+            <hr style="border:0.5px solid rgba(0,240,255,0.3); margin:10px 0;">
+            
+            <p style="color:#00ff66; font-size:10px; margin-bottom:4px;">3. Sudah Bayar? Klik Tombol di Bawah:</p>
+            <button onclick="cekTokenOtomatis()" class="modal-btn" style="background:#00ff66; color:#000; padding:6px 12px; font-size:11px; font-weight:bold;">CEK TOKEN SAYA</button>
+            <div id="tokenOutput" style="margin-top:8px;"></div>
         </div>
     `;
+}
+
+function bukaSaweria() {
+    const nama = document.getElementById("buyerInput").value;
+    if (!nama) return alert("Isi Nama Pembeli terlebih dahulu!");
+    window.open(`https://saweria.co/ZeeStore02`, '_blank');
+}
+
+async function cekTokenOtomatis() {
+    const nama = document.getElementById("buyerInput").value;
+    if (!nama) return alert("Masukkan Nama Pembeli yang kamu pakai saat bayar!");
+
+    document.getElementById("tokenOutput").innerHTML = "<p style='color:#00f0ff; font-size:11px;'>Mengecek pembayaran...</p>";
+
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/check-token', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ buyerName: nama })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById("tokenOutput").innerHTML = `
+                <p style="color:#00ff66; font-weight:bold; font-size:12px; margin:0;">Token Berhasil Ditemukan!</p>
+                <p style="font-size:13px; color:#fff; margin:4px 0;">Kode: <b style="color:#00f0ff;">${data.token}</b></p>
+                <p style="font-size:10px; color:#b0c4de; margin:0;">Aktif s/d: ${data.expired}</p>
+            `;
+        } else {
+            document.getElementById("tokenOutput").innerHTML = `<p style="color:#ff4444; font-size:10px;">${data.message}</p>`;
+        }
+    } catch (e) {
+        alert("Gagal mengambil data token.");
+    }
 }
 
 
