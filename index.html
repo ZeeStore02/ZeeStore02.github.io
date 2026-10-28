@@ -483,20 +483,22 @@
             margin-bottom: 15px;
         }
 
-        .modal-btn {
-            display: block;
-            background: rgba(0, 240, 255, 0.2);
-            border: 1px solid #00f0ff;
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+.modal-btn {
+    display: block;
+    width: fit-content; /* atau beri max-width jika ingin tombol tidak selebar container */
+    margin: 0 auto 8px auto; /* 'auto' kiri dan kanan membuat posisi tombol pas di tengah */
+    background: rgba(0, 240, 255, 0.2);
+    border: 1px solid #00f0ff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
 
         .modal-btn:hover {
             background: rgba(0, 240, 255, 0.5);
@@ -762,7 +764,7 @@
         <div style="background:rgba(3,7,18,0.8); border:1px solid rgba(176,196,222,0.4); border-radius:10px; padding:12px;">
             <h4 style="color:#b0c4de; font-size:0.9rem; margin-bottom:4px;">🎁 Token Gratis (12 Hari)</h4>
             <p style="font-size:0.7rem; color:#b0c4de; margin-bottom:8px;">*Terbatas 1x klaim per Device ID tiap 30 hari</p>
-            <button class="modal-btn" style="border-color:#b0c4de;" onclick="klaimFree()">KLAIM TOKEN FREE</button>
+            <button class="modal-btn" style="border-color:#b0c4de; margin: 0 auto;" onclick="klaimFree()">KLAIM TOKEN FREE</button>
             <div id="freeResult" style="margin-top:8px;"></div>
         </div>
     </div>
@@ -898,12 +900,13 @@ function bayarQRIS() {
             <input type="text" id="buyerInput" placeholder="Contoh: ZeeUser" style="width:90%; padding:6px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-size:11px; text-align:center;">
             
             <p style="color:#b0c4de; font-size:10px; margin:8px 0 4px 0;">2. Klik Bayar & Pakai Nama Yang Sama di Saweria:</p>
-            <button onclick="bukaSaweria()" class="modal-btn" style="padding:5px 10px; font-size:11px;">BAYAR SEKARANG ➔</button>
+            <button onclick="bukaSaweria()" class="modal-btn" style="padding: 8px 16px; font-size: 11px; margin: 0 auto;">BAYAR SEKARANG ➔</button>
+
             
             <hr style="border:0.5px solid rgba(0,240,255,0.3); margin:10px 0;">
             
             <p style="color:#00ff66; font-size:10px; margin-bottom:4px;">3. Sudah Bayar? Klik Tombol di Bawah:</p>
-            <button onclick="cekTokenOtomatis()" class="modal-btn" style="background:#00ff66; color:#000; padding:6px 12px; font-size:11px; font-weight:bold;">CEK TOKEN SAYA</button>
+            <button onclick="cekTokenOtomatis()" class="modal-btn" style="background:#00ff66; color:#000; padding:6px 12px; font-size:11px; font-weight:bold; margin: 0 auto;">CEK TOKEN SAYA</button>
             <div id="tokenOutput" style="margin-top:8px;"></div>
         </div>
     `;
