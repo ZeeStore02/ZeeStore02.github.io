@@ -957,10 +957,16 @@ async function klaimFree() {
         const data = await res.json();
 
         if (data.success) {
+            // Cek apakah ini token yang pernah diklaim sebelumnya atau klaim baru
+            const statusLabel = data.isAlreadyClaimed 
+                ? "<span style='color:#ffaa00;'>Token Anda Saat Ini:</span>" 
+                : "<span style='color:#00ff66;'>Klaim Sukses!</span>";
+
             document.getElementById("freeResult").innerHTML = `
-                <p style="color:#00ff66; font-weight:bold; font-size:12px;">Klaim Sukses!</p>
-                <p style="font-size:12px;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
-                <p style="font-size:10px; color:#b0c4de;">Aktif s/d: ${data.expired}</p>
+                <p style="font-size:12px; font-weight:bold; margin-bottom:4px;">${statusLabel}</p>
+                <p style="font-size:13px; color:#fff; margin:2px 0;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
+                <p style="font-size:10px; color:#b0c4de; margin:0;">Aktif s/d: ${data.expired}</p>
+                ${data.isAlreadyClaimed ? `<p style="font-size:9px; color:#ff4444; margin-top:5px;">*${data.message}</p>` : ''}
             `;
         } else {
             document.getElementById("freeResult").innerHTML = `<p style="color:#ff4444; font-size:11px;">${data.message}</p>`;
