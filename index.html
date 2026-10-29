@@ -15,6 +15,7 @@
     <script src="https://openfpcdn.io/fingerprintjs/v3/umd.min.js"></script>
 
     <style>
+    
         * {
             box-sizing: border-box;
             margin: 0;
@@ -531,6 +532,66 @@
                 text-align: center;
             }
         }
+        /* FLOATING CHAT SEBELAH KIRI */
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #00f0ff;
+            color: #000;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.5);
+            z-index: 999;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.8);
+        }
+
+        /* MODAL CHATROOM MEMBER */
+        .chat-box {
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(3, 7, 18, 0.9);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .chat-item {
+            margin-bottom: 8px;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 4px;
+        }
+
+        .chat-sender {
+            font-size: 11px;
+            color: #00f0ff;
+            font-weight: bold;
+        }
+
+        .chat-text {
+            font-size: 12px;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        .chat-time {
+            font-size: 9px;
+            color: #b0c4de;
+            float: right;
+        }
+
     </style>
 </head>
 
@@ -728,7 +789,41 @@
     </svg>
 </a>
 
-<!-- MODAL POPUPS -->
+<!-- TOMBOL FLOATING CHAT MEMBER (SEBELAH KIRI) -->
+<div class="floating-chat" onclick="openModal('chatModal')" title="Komentar Member">
+    💬
+</div>
+<!-- MODAL CHATROOM / KOMENTAR MEMBER -->
+<div id="chatModal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
+        <h3>💬 DISKUSI & KOMENTAR</h3>
+        <p style="margin-bottom: 10px;">Kirim pesan atau ulasan kamu di sini:</p>
+
+        <!-- KOTAK PESAN MEMBER -->
+        <div class="chat-box" id="chatContainer">
+            <p style="font-size:11px; color:#b0c4de; text-align:center;">Memuat komentar...</p>
+        </div>
+
+        <!-- FORM KIRIM CHAT -->
+        <div style="display:flex; flex-direction:column; gap:6px;">
+            <!-- Input Nama Pembeli -->
+            <div id="nameInputWrapper">
+                <input type="text" id="chatName" placeholder="Masukkan Nama Kamu (Permanen)..." style="width:100%; padding:8px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:6px; font-size:11px;">
+            </div>
+            
+            <!-- Label Tampilan Nama yang Sudah Permanen -->
+            <div id="savedNameDisplay" style="display:none; justify-content:space-between; align-items:center; background:rgba(0,240,255,0.1); border:1px solid #00f0ff; padding:6px 10px; border-radius:6px;">
+                <span style="font-size:11px; color:#00f0ff;">Pengirim: <b id="displayMemberName"></b></span>
+                <button onclick="resetMemberName()" style="background:none; border:none; color:#ff4444; font-size:10px; cursor:pointer; text-decoration:underline;">Ganti Nama</button>
+            </div>
+
+            <textarea id="chatMessage" placeholder="Tulis komentar..." rows="2" style="width:100%; padding:8px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:6px; font-size:11px; resize:none;"></textarea>
+            <button onclick="sendMemberChat()" class="modal-btn" style="width:100%; margin:0; padding:8px;">KIRIM PESAN 🚀</button>
+        </div>
+    </div>
+</div>
+
 <!-- MODAL TOKEN SCRIPT (BELI & FREE) -->
 <div id="tokenModal" class="modal">
     <div class="modal-content">
@@ -1071,6 +1166,103 @@
             alert("Gagal terhubung ke server backend.");
         }
     }
+
+// Cek Nama Permanen saat Modal Chat Dibuka
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+    if (modalId === 'chatModal') {
+        checkSavedMemberName();
+        loadMemberChats();
+    }
+}
+
+// Fungsi Memeriksa Apakah Nama Sudah Tersimpan Permanen di Browser
+function checkSavedMemberName() {
+    const savedName = localStorage.getItem('zee_member_name');
+    const nameInputWrapper = document.getElementById('nameInputWrapper');
+    const savedNameDisplay = document.getElementById('savedNameDisplay');
+    const displayMemberName = document.getElementById('displayMemberName');
+
+    if (savedName) {
+        nameInputWrapper.style.display = 'none';
+        savedNameDisplay.style.display = 'flex';
+        displayMemberName.innerText = savedName;
+    } else {
+        nameInputWrapper.style.display = 'block';
+        savedNameDisplay.style.display = 'none';
+    }
+}
+
+// Fungsi Reset / Ganti Nama
+function resetMemberName() {
+    if (confirm("Apakah kamu yakin ingin mengganti nama pengirim?")) {
+        localStorage.removeItem('zee_member_name');
+        document.getElementById('chatName').value = '';
+        checkSavedMemberName();
+    }
+}
+
+// Fungsi Memuat Komentar dari Backend
+async function loadMemberChats() {
+    const container = document.getElementById('chatContainer');
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/get-chats');
+        const data = await res.json();
+
+        if (data.success && data.chats.length > 0) {
+            container.innerHTML = data.chats.map(chat => `
+                <div class="chat-item">
+                    <span class="chat-sender">👤 ${chat.name}</span>
+                    <span class="chat-time">${chat.time}</span>
+                    <div class="chat-text">${chat.message}</div>
+                </div>
+            `).join('');
+            container.scrollTop = container.scrollHeight;
+        } else {
+            container.innerHTML = `<p style="font-size:11px; color:#b0c4de; text-align:center;">Belum ada komentar. Jadi yang pertama!</p>`;
+        }
+    } catch (e) {
+        container.innerHTML = `<p style="font-size:11px; color:#ff4444; text-align:center;">Gagal memuat pesan.</p>`;
+    }
+}
+
+// Fungsi Kirim Pesan dengan Nama Permanen
+async function sendMemberChat() {
+    let name = localStorage.getItem('zee_member_name');
+
+    // Jika nama belum disimpan, ambil dari input dan simpan permanen
+    if (!name) {
+        name = document.getElementById('chatName').value.trim();
+        if (!name) return alert("Masukkan nama kamu terlebih dahulu!");
+        
+        // Simpan ke LocalStorage HP agar Permanen
+        localStorage.setItem('zee_member_name', name);
+        checkSavedMemberName();
+    }
+
+    const message = document.getElementById('chatMessage').value.trim();
+    if (!message) return alert("Tulis komentar terlebih dahulu!");
+
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/send-chat', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ name, message })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById('chatMessage').value = '';
+            loadMemberChats();
+        } else {
+            alert("Gagal mengirim pesan.");
+        }
+    } catch (e) {
+        alert("Gagal terhubung ke server.");
+    }
+}
+
+
 </script>
 
 </body>
