@@ -33,21 +33,20 @@
             margin: auto;
             padding: 18px;
         }
- .navbar {
-    /* Mengganti warna solid menjadi gambar anime.jpg + efek gelap (overlay) */
-    background: linear-gradient(rgba(3, 15, 30, 0.3), rgba(3, 15, 30, 0.3)), url('anime.jpg') center/cover no-repeat;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 240, 255, 0.3);
-    color: white;
-    padding: 15px 22px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    box-shadow: 0 5px 20px rgba(0, 240, 255, 0.15);
-}
 
+        .navbar {
+            background: linear-gradient(rgba(3, 15, 30, 0.3), rgba(3, 15, 30, 0.3)), url('anime.jpg') center/cover no-repeat;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: white;
+            padding: 15px 22px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 5px 20px rgba(0, 240, 255, 0.15);
+        }
 
         .logo {
             display: flex;
@@ -59,7 +58,6 @@
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
-        /* ANIMASI LOGO BERPUTAR */
         .logo-icon {
             font-size: 26px;
             display: inline-block;
@@ -108,7 +106,6 @@
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
-        /* HERO SECTION DENGAN VIDEO BACKGROUND */
         .hero {
             margin-top: 15px;
             min-height: 290px;
@@ -182,17 +179,14 @@
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
         }
 
-        /* MAIN CONTENT */
-.main {
-    /* Mengganti warna solid menjadi gambar anime2.jpg + overlay gelap */
-    background: linear-gradient(rgba(3, 7, 18, 0.4), rgba(3, 7, 18, 0.5)), url('anime1.jpg') center/cover no-repeat;
-    backdrop-filter: blur(10px);
-    margin-top: 15px;
-    border-radius: 15px;
-    padding: 22px;
-    border: 1px solid rgba(0, 240, 255, 0.3);
-}
-
+        .main {
+            background: linear-gradient(rgba(3, 7, 18, 0.4), rgba(3, 7, 18, 0.5)), url('anime1.jpg') center/cover no-repeat;
+            backdrop-filter: blur(10px);
+            margin-top: 15px;
+            border-radius: 15px;
+            padding: 22px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
 
         .section-title {
             display: flex;
@@ -239,7 +233,6 @@
             cursor: pointer;
         }
 
-        /* CONTENT GRID & SIDEBAR */
         .content {
             display: grid;
             grid-template-columns: 240px 1fr;
@@ -302,7 +295,6 @@
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
 
-        /* CARD GRID */
         .car-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -389,7 +381,6 @@
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
         }
 
-        /* FOOTER BANNER */
         .footer-banner {
             margin-top: 20px;
             border-radius: 13px;
@@ -412,7 +403,6 @@
             color: #b0c4de;
         }
 
-        /* FLOATING WA */
         .floating-wa {
             position: fixed;
             bottom: 20px;
@@ -436,7 +426,6 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.8);
         }
 
-        /* MODAL POPUP */
         .modal {
             display: none;
             position: fixed;
@@ -483,22 +472,21 @@
             margin-bottom: 15px;
         }
 
-.modal-btn {
-    display: block;
-    width: fit-content; /* atau beri max-width jika ingin tombol tidak selebar container */
-    margin: 0 auto 8px auto; /* 'auto' kiri dan kanan membuat posisi tombol pas di tengah */
-    background: rgba(0, 240, 255, 0.2);
-    border: 1px solid #00f0ff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
+        .modal-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 8px auto;
+            background: rgba(0, 240, 255, 0.2);
+            border: 1px solid #00f0ff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
         .modal-btn:hover {
             background: rgba(0, 240, 255, 0.5);
@@ -516,7 +504,6 @@
             cursor: pointer;
         }
 
-        /* RESPONSIVE */
         @media(max-width: 800px) {
             .content {
                 grid-template-columns: 1fr;
@@ -742,7 +729,6 @@
 </a>
 
 <!-- MODAL POPUPS -->
-
 <!-- MODAL TOKEN SCRIPT (BELI & FREE) -->
 <div id="tokenModal" class="modal">
     <div class="modal-content">
@@ -750,6 +736,13 @@
         <h3>TOKEN SCRIPT MANAGER</h3>
         <p style="margin-bottom:10px;">Pilih opsi pembelian premium atau klaim token gratis di bawah ini:</p>
 
+        <!-- RIWAYAT TOKEN SAYA -->
+        <div id="historySection" style="background:rgba(0, 240, 255, 0.1); border:1px dashed #00f0ff; border-radius:10px; padding:12px; margin-bottom:12px; display:none;">
+            <h4 style="color:#00f0ff; font-size:0.85rem; margin-bottom:6px;">📋 Token Tersimpan (Perangkat Ini)</h4>
+            <div id="historyList"></div>
+        </div>
+
+        <!-- OPSI PREMIUM -->
         <div style="background:rgba(3,7,18,0.8); border:1px solid #00f0ff; border-radius:10px; padding:12px; margin-bottom:12px;">
             <h4 style="color:#00f0ff; font-size:0.9rem; margin-bottom:6px;">💳 Pembelian Token Premium</h4>
             <select id="nominalPaket" style="width:100%; padding:8px; background:#030712; color:#fff; border:1px solid #00f0ff; border-radius:6px; margin-bottom:8px;">
@@ -761,6 +754,7 @@
             <div id="qrisResult" style="margin-top:8px;"></div>
         </div>
 
+        <!-- OPSI GRATIS -->
         <div style="background:rgba(3,7,18,0.8); border:1px solid rgba(176,196,222,0.4); border-radius:10px; padding:12px;">
             <h4 style="color:#b0c4de; font-size:0.9rem; margin-bottom:4px;">🎁 Token Gratis (12 Hari)</h4>
             <p style="font-size:0.7rem; color:#b0c4de; margin-bottom:8px;">*Terbatas 1x klaim per Device ID tiap 30 hari</p>
@@ -841,6 +835,96 @@
         });
     }
 
+    // --- FUNGSI RIWAYAT LOCALSTORAGE ---
+
+    // Simpan Token Baru ke LocalStorage
+    function saveTokenToHistory(token, expired, type = "Free/Paid") {
+        let history = JSON.parse(localStorage.getItem('zee_token_history')) || [];
+        
+        const exists = history.some(item => item.token === token);
+        if (!exists) {
+            history.unshift({
+                token: token,
+                expired: expired,
+                type: type,
+                date: new Date().toLocaleDateString('id-ID')
+            });
+            if (history.length > 5) history.pop();
+            localStorage.setItem('zee_token_history', JSON.stringify(history));
+        }
+        renderTokenHistory();
+    }
+
+    // Tampilkan Riwayat Token di Modal
+    function renderTokenHistory() {
+        const history = JSON.parse(localStorage.getItem('zee_token_history')) || [];
+        const historySection = document.getElementById('historySection');
+        const historyList = document.getElementById('historyList');
+
+        if (history.length === 0) {
+            historySection.style.display = 'none';
+            return;
+        }
+
+        historySection.style.display = 'block';
+        historyList.innerHTML = history.map((item) => `
+            <div style="background:rgba(3,7,18,0.9); border:1px solid rgba(0,240,255,0.3); border-radius:6px; padding:8px; margin-bottom:6px; text-align:left;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:11px; color:#00f0ff; font-weight:bold;">${item.token}</span>
+                    <button onclick="copyToClipboard('${item.token}')" style="background:rgba(0,240,255,0.2); border:1px solid #00f0ff; color:#fff; font-size:9px; padding:2px 6px; border-radius:4px; cursor:pointer;">📋 Salin</button>
+                </div>
+                <div style="font-size:9px; color:#b0c4de; margin-top:3px;">
+                    <span>Kedaluwarsa: ${item.expired}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Fungsi Salin ke Clipboard (Mendukung File Lokal & HTTPS)
+    function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Token berhasil disalin!");
+            }).catch(() => {
+                fallbackCopyTextToClipboard(text);
+            });
+        } else {
+            fallbackCopyTextToClipboard(text);
+        }
+    }
+
+    // Fungsi Cadangan Salin Token
+    function fallbackCopyTextToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                alert("Token berhasil disalin!");
+            } else {
+                alert("Gagal menyalin token secara otomatis.");
+            }
+        } catch (err) {
+            alert("Browser tidak mendukung salin otomatis.");
+        }
+
+        document.body.removeChild(textArea);
+    }
+
+    // Jalankan render saat halaman pertama kali dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+        renderTokenHistory();
+    });
+
     // Fungsi Pencarian Kartu Real-Time
     function searchCards() {
         const input = document.getElementById('searchInput').value.toLowerCase();
@@ -893,92 +977,100 @@
         cards.forEach(card => grid.appendChild(card));
     }
 
-function bayarQRIS() {
-    document.getElementById("qrisResult").innerHTML = `
-        <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 12px; border-radius: 8px; margin-top: 10px;">
-            <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin-bottom:6px;">1. Masukkan Nama Pembeli:</p>
-            <input type="text" id="buyerInput" placeholder="Contoh: ZeeUser" style="width:90%; padding:6px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-size:11px; text-align:center;">
-            
-            <p style="color:#b0c4de; font-size:10px; margin:8px 0 4px 0;">2. Klik Bayar & Pakai Nama Yang Sama di Saweria:</p>
-            <button onclick="bukaSaweria()" class="modal-btn" style="padding: 8px 16px; font-size: 11px; margin: 0 auto;">BAYAR SEKARANG ➔</button>
+    function bayarQRIS() {
+        document.getElementById("qrisResult").innerHTML = `
+            <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 12px; border-radius: 8px; margin-top: 10px;">
+                <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin-bottom:6px;">1. Masukkan Nama Pembeli:</p>
+                <input type="text" id="buyerInput" placeholder="Contoh: ZeeUser" style="width:90%; padding:6px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-size:11px; text-align:center;">
+                
+                <p style="color:#b0c4de; font-size:10px; margin:8px 0 4px 0;">2. Klik Bayar & Pakai Nama Yang Sama di Saweria:</p>
+                <button onclick="bukaSaweria()" class="modal-btn" style="padding: 8px 16px; font-size: 11px; margin: 0 auto;">BAYAR SEKARANG ➔</button>
 
-            
-            <hr style="border:0.5px solid rgba(0,240,255,0.3); margin:10px 0;">
-            
-            <p style="color:#00ff66; font-size:10px; margin-bottom:4px;">3. Sudah Bayar? Klik Tombol di Bawah:</p>
-            <button onclick="cekTokenOtomatis()" class="modal-btn" style="background:#00ff66; color:#000; padding:6px 12px; font-size:11px; font-weight:bold; margin: 0 auto;">CEK TOKEN SAYA</button>
-            <div id="tokenOutput" style="margin-top:8px;"></div>
-        </div>
-    `;
-}
-
-function bukaSaweria() {
-    const nama = document.getElementById("buyerInput").value;
-    if (!nama) return alert("Isi Nama Pembeli terlebih dahulu!");
-    window.open(`https://saweria.co/ZeeStore02`, '_blank');
-}
-
-async function cekTokenOtomatis() {
-    const nama = document.getElementById("buyerInput").value;
-    if (!nama) return alert("Masukkan Nama Pembeli yang kamu pakai saat bayar!");
-
-    document.getElementById("tokenOutput").innerHTML = "<p style='color:#00f0ff; font-size:11px;'>Mengecek pembayaran...</p>";
-
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/check-token', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ buyerName: nama })
-        });
-        const data = await res.json();
-
-        if (data.success) {
-            document.getElementById("tokenOutput").innerHTML = `
-                <p style="color:#00ff66; font-weight:bold; font-size:12px; margin:0;">Token Berhasil Ditemukan!</p>
-                <p style="font-size:13px; color:#fff; margin:4px 0;">Kode: <b style="color:#00f0ff;">${data.token}</b></p>
-                <p style="font-size:10px; color:#b0c4de; margin:0;">Aktif s/d: ${data.expired}</p>
-            `;
-        } else {
-            document.getElementById("tokenOutput").innerHTML = `<p style="color:#ff4444; font-size:10px;">${data.message}</p>`;
-        }
-    } catch (e) {
-        alert("Gagal mengambil data token.");
+                <hr style="border:0.5px solid rgba(0,240,255,0.3); margin:10px 0;">
+                
+                <p style="color:#00ff66; font-size:10px; margin-bottom:4px;">3. Sudah Bayar? Klik Tombol di Bawah:</p>
+                <button onclick="cekTokenOtomatis()" class="modal-btn" style="background:#00ff66; color:#000; padding:6px 12px; font-size:11px; font-weight:bold; margin: 0 auto;">CEK TOKEN SAYA</button>
+                <div id="tokenOutput" style="margin-top:8px;"></div>
+            </div>
+        `;
     }
-}
 
-
-async function klaimFree() {
-    if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
-    document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
-
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/claim-free', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ deviceId: currentDeviceId })
-        });
-        const data = await res.json();
-
-        if (data.success) {
-            // Cek apakah ini token yang pernah diklaim sebelumnya atau klaim baru
-            const statusLabel = data.isAlreadyClaimed 
-                ? "<span style='color:#ffaa00;'>Token Anda Saat Ini:</span>" 
-                : "<span style='color:#00ff66;'>Klaim Sukses!</span>";
-
-            document.getElementById("freeResult").innerHTML = `
-                <p style="font-size:12px; font-weight:bold; margin-bottom:4px;">${statusLabel}</p>
-                <p style="font-size:13px; color:#fff; margin:2px 0;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
-                <p style="font-size:10px; color:#b0c4de; margin:0;">Aktif s/d: ${data.expired}</p>
-                ${data.isAlreadyClaimed ? `<p style="font-size:9px; color:#ff4444; margin-top:5px;">*${data.message}</p>` : ''}
-            `;
-        } else {
-            document.getElementById("freeResult").innerHTML = `<p style="color:#ff4444; font-size:11px;">${data.message}</p>`;
-        }
-    } catch (e) {
-        alert("Gagal terhubung ke server backend.");
+    function bukaSaweria() {
+        const nama = document.getElementById("buyerInput").value;
+        if (!nama) return alert("Isi Nama Pembeli terlebih dahulu!");
+        window.open(`https://saweria.co/ZeeStore02`, '_blank');
     }
-}
 
+    async function cekTokenOtomatis() {
+        const nama = document.getElementById("buyerInput").value.trim();
+        if (!nama) return alert("Masukkan Nama Pembeli yang kamu pakai saat bayar!");
+        if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat, tunggu sebentar...");
+
+        document.getElementById("tokenOutput").innerHTML = "<p style='color:#00f0ff; font-size:11px;'>Mengecek pembayaran...</p>";
+
+        try {
+            const res = await fetch('https://zee-backend-black.vercel.app/api/check-token', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                // Kirim Nama Pembeli DAN Device ID ke Backend
+                body: JSON.stringify({ 
+                    buyerName: nama,
+                    deviceId: currentDeviceId 
+                })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                saveTokenToHistory(data.token, data.expired, "Premium");
+
+                document.getElementById("tokenOutput").innerHTML = `
+                    <p style="color:#00ff66; font-weight:bold; font-size:12px; margin:0;">Token Berhasil Ditemukan!</p>
+                    <p style="font-size:13px; color:#fff; margin:4px 0;">Kode: <b style="color:#00f0ff;">${data.token}</b></p>
+                    <p style="font-size:10px; color:#b0c4de; margin:0;">Aktif s/d: ${data.expired}</p>
+                    <button onclick="copyToClipboard('${data.token}')" class="modal-btn" style="padding:4px 10px; font-size:10px; margin-top:6px; margin:0 auto;">📋 Salin Token</button>
+                `;
+            } else {
+                document.getElementById("tokenOutput").innerHTML = `<p style="color:#ff4444; font-size:10px;">${data.message}</p>`;
+            }
+        } catch (e) {
+            alert("Gagal mengambil data token.");
+        }
+    }
+
+
+    async function klaimFree() {
+        if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
+        document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
+
+        try {
+            const res = await fetch('https://zee-backend-black.vercel.app/api/claim-free', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ deviceId: currentDeviceId })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                saveTokenToHistory(data.token, data.expired, "Gratis");
+
+                const statusLabel = data.isAlreadyClaimed 
+                    ? "<span style='color:#ffaa00;'>Token Anda Saat Ini:</span>" 
+                    : "<span style='color:#00ff66;'>Klaim Sukses!</span>";
+
+                document.getElementById("freeResult").innerHTML = `
+                    <p style="font-size:12px; font-weight:bold; margin-bottom:4px;">${statusLabel}</p>
+                    <p style="font-size:13px; color:#fff; margin:2px 0;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
+                    <p style="font-size:10px; color:#b0c4de; margin:0;">Aktif s/d: ${data.expired}</p>
+                    <button onclick="copyToClipboard('${data.token}')" class="modal-btn" style="padding:4px 10px; font-size:10px; margin-top:6px; margin:0 auto;">📋 Salin Token</button>
+                    ${data.isAlreadyClaimed ? `<p style="font-size:9px; color:#ff4444; margin-top:5px;">*${data.message}</p>` : ''}
+                `;
+            } else {
+                document.getElementById("freeResult").innerHTML = `<p style="color:#ff4444; font-size:11px;">${data.message}</p>`;
+            }
+        } catch (e) {
+            alert("Gagal terhubung ke server backend.");
+        }
+    }
 </script>
 
 </body>
