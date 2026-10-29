@@ -1,28 +1,19 @@
 {
-  "background_color": "rgb(203, 51, 51)",
-  "description": "Akses script eksklusif, menu modding, dan hubungi admin di sini!",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "zeestore",
-  "orientation": "any",
+  "name": "ZEE STORE Official",
+  "short_name": "ZEE STORE",
+  "description": "Akses script eksklusif, menu modding terbaik, dan hubungi admin di sini.",
+  "start_url": "/index.html",
   "scope": "/",
-  "short_name": "zeestore02",
-  "start_url": "/",
-  "theme_color": "rgb(57, 41, 217)",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#030712",
+  "theme_color": "#00f0ff",
   "icons": [
     {
       "src": "https://zeestore02.github.io/anime.jpg",
+      "sizes": "512x512",
       "type": "image/jpeg",
-      "sizes": "1024x1024",
-      "isSquare": true,
-      "isPng": false,
-      "isWebp": false,
-      "isJpg": true,
-      "width": 1024,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "purpose": "any maskable"
     }
-  ],
-  "id": "V 1.0.0"
+  ]
 }

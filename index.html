@@ -10,10 +10,8 @@
     <meta property="og:image" content="https://zeestore02.github.io/anime.jpg">
     <meta property="og:url" content="https://zeestore02.github.io/">
     <meta property="og:type" content="website">
-    
-    <!-- CDN FingerprintJS untuk pembatasan 1 Device ID 1x/Bulan -->
     <script src="https://openfpcdn.io/fingerprintjs/v3/umd.min.js"></script>
-
+    <link rel="manifest" href="manifest.json">
     <style>
     
         * {
@@ -908,12 +906,19 @@
     });
 
     function openModal(modalId) {
+        playCyberClick('modal'); // <--- Suara blip futuristik
         document.getElementById(modalId).style.display = 'block';
+        if (modalId === 'chatModal') {
+            checkSavedMemberName();
+            loadMemberChats();
+        }
     }
 
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-    }
+function closeModal(modalId) {
+    playCyberClick(); // <--- Suara klik standar
+    document.getElementById(modalId).style.display = 'none';
+}
+
 
     window.onclick = function(event) {
         let modals = document.getElementsByClassName('modal');
@@ -975,18 +980,17 @@
         `).join('');
     }
 
-    // Fungsi Salin ke Clipboard (Mendukung File Lokal & HTTPS)
     function copyToClipboard(text) {
-        if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Token berhasil disalin!");
-            }).catch(() => {
-                fallbackCopyTextToClipboard(text);
-            });
-        } else {
-            fallbackCopyTextToClipboard(text);
-        }
+    playCyberClick('success'); // <--- Suara chime sukses
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Token berhasil disalin!");
+        });
+    } else {
+        fallbackCopyTextToClipboard(text);
     }
+}
+
 
     // Fungsi Cadangan Salin Token
     function fallbackCopyTextToClipboard(text) {
@@ -1015,10 +1019,17 @@
         document.body.removeChild(textArea);
     }
 
-    // Jalankan render saat halaman pertama kali dimuat
-    document.addEventListener('DOMContentLoaded', () => {
-        renderTokenHistory();
+document.addEventListener('DOMContentLoaded', () => {
+    renderTokenHistory();
+
+    // Jalankan efek suara pada seluruh elemen berkelas .btn, .rent, .modal-btn
+    document.querySelectorAll('.btn, .rent, .modal-btn, .apply').forEach(button => {
+        button.addEventListener('click', () => {
+            playCyberClick();
+        });
     });
+});
+
 
     // Fungsi Pencarian Kartu Real-Time
     function searchCards() {
@@ -1261,7 +1272,32 @@ async function sendMemberChat() {
         alert("Gagal terhubung ke server.");
     }
 }
+// --- FUNGSI EFEK SUARA ASLI (FILE MP3/WAV) ---
+const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'); // Suara Klik Cyber UI
+const modalSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'); // Suara Blip Pop-up
+const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3'); // Suara Sukses/Chime
 
+// Set volume agar tidak terlalu keras
+clickSound.volume = 0.3;
+modalSound.volume = 0.4;
+successSound.volume = 0.4;
+
+function playCyberClick(type = 'default') {
+    try {
+        if (type === 'modal') {
+            modalSound.currentTime = 0;
+            modalSound.play().catch(() => {});
+        } else if (type === 'success') {
+            successSound.currentTime = 0;
+            successSound.play().catch(() => {});
+        } else {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(() => {});
+        }
+    } catch (e) {
+        // Abaikan jika browser memblokir autopolicy audio
+    }
+}
 
 </script>
 
