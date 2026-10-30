@@ -554,41 +554,121 @@
             box-shadow: 0 6px 20px rgba(0, 240, 255, 0.8);
         }
 
-        /* MODAL CHATROOM MEMBER */
-        .chat-box {
-            max-height: 200px;
-            overflow-y: auto;
-            background: rgba(3, 7, 18, 0.9);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: left;
-        }
+/* MODAL CHATROOM MEMBER ALA KIWOLASU */
+.chat-box {
+    max-height: 280px;
+    height: 280px;
+    overflow-y: auto;
+    background: #060b13;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-        .chat-item {
-            margin-bottom: 8px;
-            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 4px;
-        }
+/* BALON CHAT */
+.chat-bubble {
+    background: #0d1527;
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 85%;
+    width: fit-content;
+    word-break: break-word;
+    position: relative;
+}
 
-        .chat-sender {
-            font-size: 11px;
-            color: #00f0ff;
-            font-weight: bold;
-        }
+.chat-bubble.self {
+    align-self: flex-end;
+    background: #0f2338;
+    border-color: rgba(0, 240, 255, 0.4);
+}
 
-        .chat-text {
-            font-size: 12px;
-            color: #fff;
-            margin-top: 2px;
-        }
+.chat-sender {
+    font-size: 11px;
+    color: #00f0ff;
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+}
 
-        .chat-time {
-            font-size: 9px;
-            color: #b0c4de;
-            float: right;
-        }
+.chat-text {
+    font-size: 12px;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+.chat-img-preview {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    cursor: pointer;
+}
+
+.chat-time {
+    font-size: 9px;
+    color: #6c7a89;
+    text-align: right;
+    margin-top: 4px;
+    display: block;
+}
+
+/* INPUT BAR DENGAN TOMBOL FOTO & KIRIM */
+.chat-input-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #060b13;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 25px;
+    padding: 5px 8px 5px 12px;
+}
+
+.chat-input-bar input[type="text"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 12px;
+}
+
+.btn-icon-chat {
+    background: transparent;
+    border: none;
+    color: #00f0ff;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.btn-icon-chat:hover {
+    background: rgba(0, 240, 255, 0.2);
+}
+
+.btn-send-chat {
+    background: #00f0ff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
 
     </style>
 </head>
@@ -793,31 +873,54 @@
 </div>
 <!-- MODAL CHATROOM / KOMENTAR MEMBER -->
 <div id="chatModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" style="max-width: 360px;">
         <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
-        <h3>💬 DISKUSI & KOMENTAR</h3>
-        <p style="margin-bottom: 10px;">Kirim pesan atau ulasan kamu di sini:</p>
+        
+        <!-- HEADER TITLE ALA KIWOLASU -->
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 18px; color: #00f0ff;">💬</span>
+            <h3 style="margin: 0; font-size: 16px; letter-spacing: 1px;">CHAT</h3>
+        </div>
 
         <!-- KOTAK PESAN MEMBER -->
         <div class="chat-box" id="chatContainer">
             <p style="font-size:11px; color:#b0c4de; text-align:center;">Memuat komentar...</p>
         </div>
 
-        <!-- FORM KIRIM CHAT -->
-        <div style="display:flex; flex-direction:column; gap:6px;">
-            <!-- Input Nama Pembeli -->
+        <!-- IDENTITAS PENGIRIM -->
+        <div style="margin-bottom: 8px;">
             <div id="nameInputWrapper">
-                <input type="text" id="chatName" placeholder="Masukkan Nama Kamu (Permanen)..." style="width:100%; padding:8px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:6px; font-size:11px;">
+                <input type="text" id="chatName" placeholder="Masukkan Nama Kamu..." style="width:100%; padding:8px 12px; background:#060b13; border:1px solid rgba(0,240,255,0.3); color:#fff; border-radius:8px; font-size:11px;">
             </div>
-            
-            <!-- Label Tampilan Nama yang Sudah Permanen -->
-            <div id="savedNameDisplay" style="display:none; justify-content:space-between; align-items:center; background:rgba(0,240,255,0.1); border:1px solid #00f0ff; padding:6px 10px; border-radius:6px;">
+            <div id="savedNameDisplay" style="display:none; justify-space-between; align-items:center; background:rgba(0,240,255,0.1); border:1px solid #00f0ff; padding:5px 10px; border-radius:8px;">
                 <span style="font-size:11px; color:#00f0ff;">Pengirim: <b id="displayMemberName"></b></span>
                 <button onclick="resetMemberName()" style="background:none; border:none; color:#ff4444; font-size:10px; cursor:pointer; text-decoration:underline;">Ganti Nama</button>
             </div>
+        </div>
 
-            <textarea id="chatMessage" placeholder="Tulis komentar..." rows="2" style="width:100%; padding:8px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:6px; font-size:11px; resize:none;"></textarea>
-            <button onclick="sendMemberChat()" class="modal-btn" style="width:100%; margin:0; padding:8px;">KIRIM PESAN 🚀</button>
+        <!-- PREVIEW FOTO JIKA ADA YANG DIPILIH -->
+        <div id="imagePreviewContainer" style="display:none; position:relative; margin-bottom:8px;">
+            <img id="imagePreview" src="" style="max-height:80px; border-radius:6px; border:1px solid #00f0ff;">
+            <button onclick="clearImageSelection()" style="position:absolute; top:0; background:red; color:#fff; border:none; border-radius:50%; width:18px; height:18px; font-size:10px; cursor:pointer;">&times;</button>
+        </div>
+
+        <!-- INPUT BAR ALA MESSAGING -->
+        <div class="chat-input-bar">
+            <!-- Input File Gambar (Hidden) -->
+            <input type="file" id="chatImageInput" accept="image/*" style="display:none;" onchange="handleImageSelect(event)">
+            
+            <!-- Tombol Galeri Foto -->
+            <button class="btn-icon-chat" onclick="document.getElementById('chatImageInput').click()" title="Kirim Foto">
+                🖼️
+            </button>
+            
+            <!-- Input Teks -->
+            <input type="text" id="chatMessage" placeholder="Tulis pesan..." onkeypress="if(event.key==='Enter') sendMemberChat()">
+            
+            <!-- Tombol Kirim -->
+            <button class="btn-send-chat" onclick="sendMemberChat()" title="Kirim">
+                ➤
+            </button>
         </div>
     </div>
 </div>
@@ -913,6 +1016,102 @@
             loadMemberChats();
         }
     }
+let selectedImageData = null;
+
+// Konversi foto ke base64 saat dipilihs
+function handleImageSelect(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (file.size > 2 * 1024 * 1024) { // Limit 2MB
+        alert("Ukuran foto maksimal 2MB!");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        selectedImageData = e.target.result;
+        document.getElementById('imagePreview').src = selectedImageData;
+        document.getElementById('imagePreviewContainer').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+}
+
+function clearImageSelection() {
+    selectedImageData = null;
+    document.getElementById('chatImageInput').value = '';
+    document.getElementById('imagePreviewContainer').style.display = 'none';
+}
+
+// Memuat Chat dengan Format Balon & Gambar
+async function loadMemberChats() {
+    const container = document.getElementById('chatContainer');
+    const mySavedName = localStorage.getItem('zee_member_name');
+
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/get-chats');
+        const data = await res.json();
+
+        if (data.success && data.chats.length > 0) {
+            container.innerHTML = data.chats.map(chat => {
+                const isSelf = mySavedName && chat.name === mySavedName;
+                const imageTag = chat.image ? `<br><img src="${chat.image}" class="chat-img-preview" onclick="window.open('${chat.image}')">` : '';
+                
+                return `
+                    <div class="chat-bubble ${isSelf ? 'self' : ''}">
+                        <span class="chat-sender">${chat.name}</span>
+                        <div class="chat-text">${chat.message || ''} ${imageTag}</div>
+                        <span class="chat-time">${chat.time}</span>
+                    </div>
+                `;
+            }).join('');
+            container.scrollTop = container.scrollHeight;
+        } else {
+            container.innerHTML = `<p style="font-size:11px; color:#b0c4de; text-align:center;">Belum ada komentar. Jadi yang pertama!</p>`;
+        }
+    } catch (e) {
+        container.innerHTML = `<p style="font-size:11px; color:#ff4444; text-align:center;">Gagal memuat pesan.</p>`;
+    }
+}
+
+// Kirim Chat Teks + Gambar
+async function sendMemberChat() {
+    let name = localStorage.getItem('zee_member_name');
+
+    if (!name) {
+        name = document.getElementById('chatName').value.trim();
+        if (!name) return alert("Masukkan nama kamu terlebih dahulu!");
+        
+        localStorage.setItem('zee_member_name', name);
+        checkSavedMemberName();
+    }
+
+    const message = document.getElementById('chatMessage').value.trim();
+    if (!message && !selectedImageData) return alert("Tulis pesan atau pilih foto!");
+
+    try {
+        const res = await fetch('https://zee-backend-black.vercel.app/api/send-chat', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ 
+                name: name, 
+                message: message,
+                image: selectedImageData 
+            })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById('chatMessage').value = '';
+            clearImageSelection();
+            loadMemberChats();
+        } else {
+            alert("Gagal mengirim pesan.");
+        }
+    } catch (e) {
+        alert("Gagal terhubung ke server.");
+    }
+}
 
 function closeModal(modalId) {
     playCyberClick(); // <--- Suara klik standar
