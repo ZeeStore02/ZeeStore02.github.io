@@ -13,7 +13,6 @@
     <script src="https://openfpcdn.io/fingerprintjs/v3/umd.min.js"></script>
     <link rel="manifest" href="manifest.json">
     <style>
-    
         * {
             box-sizing: border-box;
             margin: 0;
@@ -530,7 +529,7 @@
                 text-align: center;
             }
         }
-        /* FLOATING CHAT SEBELAH KIRI */
+
         .floating-chat {
             position: fixed;
             bottom: 20px;
@@ -554,122 +553,118 @@
             box-shadow: 0 6px 20px rgba(0, 240, 255, 0.8);
         }
 
-/* MODAL CHATROOM MEMBER ALA KIWOLASU */
-.chat-box {
-    max-height: 280px;
-    height: 280px;
-    overflow-y: auto;
-    background: #060b13;
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        /* MODAL CHATROOM MEMBER ALA KIWOLASU */
+        .chat-box {
+            max-height: 280px;
+            height: 280px;
+            overflow-y: auto;
+            background: #060b13;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-/* BALON CHAT */
-.chat-bubble {
-    background: #0d1527;
-    border: 1px solid rgba(0, 240, 255, 0.15);
-    border-radius: 10px;
-    padding: 10px;
-    max-width: 85%;
-    width: fit-content;
-    word-break: break-word;
-    position: relative;
-}
+        .chat-bubble {
+            background: #0d1527;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 85%;
+            width: fit-content;
+            word-break: break-word;
+            position: relative;
+        }
 
-.chat-bubble.self {
-    align-self: flex-end;
-    background: #0f2338;
-    border-color: rgba(0, 240, 255, 0.4);
-}
+        .chat-bubble.self {
+            align-self: flex-end;
+            background: #0f2338;
+            border-color: rgba(0, 240, 255, 0.4);
+        }
 
-.chat-sender {
-    font-size: 11px;
-    color: #00f0ff;
-    font-weight: bold;
-    margin-bottom: 4px;
-    display: block;
-}
+        .chat-sender {
+            font-size: 11px;
+            color: #00f0ff;
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: block;
+        }
 
-.chat-text {
-    font-size: 12px;
-    color: #ffffff;
-    line-height: 1.4;
-}
+        .chat-text {
+            font-size: 12px;
+            color: #ffffff;
+            line-height: 1.4;
+        }
 
-.chat-img-preview {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 5px;
-    border: 1px solid rgba(0, 240, 255, 0.3);
-    cursor: pointer;
-}
+        .chat-img-preview {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 5px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            cursor: pointer;
+        }
 
-.chat-time {
-    font-size: 9px;
-    color: #6c7a89;
-    text-align: right;
-    margin-top: 4px;
-    display: block;
-}
+        .chat-time {
+            font-size: 9px;
+            color: #6c7a89;
+            text-align: right;
+            margin-top: 4px;
+            display: block;
+        }
 
-/* INPUT BAR DENGAN TOMBOL FOTO & KIRIM */
-.chat-input-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #060b13;
-    border: 1px solid rgba(0, 240, 255, 0.3);
-    border-radius: 25px;
-    padding: 5px 8px 5px 12px;
-}
+        .chat-input-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #060b13;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 25px;
+            padding: 5px 8px 5px 12px;
+        }
 
-.chat-input-bar input[type="text"] {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-size: 12px;
-}
+        .chat-input-bar input[type="text"] {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 12px;
+        }
 
-.btn-icon-chat {
-    background: transparent;
-    border: none;
-    color: #00f0ff;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    border-radius: 50%;
-    transition: 0.2s;
-}
+        .btn-icon-chat {
+            background: transparent;
+            border: none;
+            color: #00f0ff;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
 
-.btn-icon-chat:hover {
-    background: rgba(0, 240, 255, 0.2);
-}
+        .btn-icon-chat:hover {
+            background: rgba(0, 240, 255, 0.2);
+        }
 
-.btn-send-chat {
-    background: #00f0ff;
-    color: #000;
-    border: none;
-    border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-
+        .btn-send-chat {
+            background: #00f0ff;
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -810,7 +805,7 @@
                 <div class="car-card" data-category="wa" data-name="WhatsApp Admin" data-price="4">
                     <div class="car-image" style="background: rgba(37, 211, 102, 0.15);">
                         <svg width="65" height="65" viewBox="0 0 24 24" fill="#25D366">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.893 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                         </svg>
                         <span class="badge">Support</span>
                     </div>
@@ -867,78 +862,61 @@
     </svg>
 </a>
 
-<!-- TOMBOL FLOATING CHAT MEMBER (SEBELAH KIRI) -->
+<!-- TOMBOL FLOATING CHAT MEMBER -->
 <div class="floating-chat" onclick="openModal('chatModal')" title="Komentar Member">
     💬
 </div>
-<!-- MODAL CHATROOM / KOMENTAR MEMBER -->
+
+<!-- MODAL CHATROOM MEMBER -->
 <div id="chatModal" class="modal">
     <div class="modal-content" style="max-width: 360px;">
         <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
         
-        <!-- HEADER TITLE ALA KIWOLASU -->
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
             <span style="font-size: 18px; color: #00f0ff;">💬</span>
             <h3 style="margin: 0; font-size: 16px; letter-spacing: 1px;">CHAT</h3>
         </div>
 
-        <!-- KOTAK PESAN MEMBER -->
         <div class="chat-box" id="chatContainer">
             <p style="font-size:11px; color:#b0c4de; text-align:center;">Memuat komentar...</p>
         </div>
 
-        <!-- IDENTITAS PENGIRIM -->
         <div style="margin-bottom: 8px;">
             <div id="nameInputWrapper">
                 <input type="text" id="chatName" placeholder="Masukkan Nama Kamu..." style="width:100%; padding:8px 12px; background:#060b13; border:1px solid rgba(0,240,255,0.3); color:#fff; border-radius:8px; font-size:11px;">
             </div>
-            <div id="savedNameDisplay" style="display:none; justify-space-between; align-items:center; background:rgba(0,240,255,0.1); border:1px solid #00f0ff; padding:5px 10px; border-radius:8px;">
+            <div id="savedNameDisplay" style="display:none; justify-content:space-between; align-items:center; background:rgba(0,240,255,0.1); border:1px solid #00f0ff; padding:5px 10px; border-radius:8px;">
                 <span style="font-size:11px; color:#00f0ff;">Pengirim: <b id="displayMemberName"></b></span>
                 <button onclick="resetMemberName()" style="background:none; border:none; color:#ff4444; font-size:10px; cursor:pointer; text-decoration:underline;">Ganti Nama</button>
             </div>
         </div>
 
-        <!-- PREVIEW FOTO JIKA ADA YANG DIPILIH -->
         <div id="imagePreviewContainer" style="display:none; position:relative; margin-bottom:8px;">
             <img id="imagePreview" src="" style="max-height:80px; border-radius:6px; border:1px solid #00f0ff;">
             <button onclick="clearImageSelection()" style="position:absolute; top:0; background:red; color:#fff; border:none; border-radius:50%; width:18px; height:18px; font-size:10px; cursor:pointer;">&times;</button>
         </div>
 
-        <!-- INPUT BAR ALA MESSAGING -->
         <div class="chat-input-bar">
-            <!-- Input File Gambar (Hidden) -->
             <input type="file" id="chatImageInput" accept="image/*" style="display:none;" onchange="handleImageSelect(event)">
-            
-            <!-- Tombol Galeri Foto -->
-            <button class="btn-icon-chat" onclick="document.getElementById('chatImageInput').click()" title="Kirim Foto">
-                🖼️
-            </button>
-            
-            <!-- Input Teks -->
+            <button class="btn-icon-chat" onclick="document.getElementById('chatImageInput').click()" title="Kirim Foto">🖼️</button>
             <input type="text" id="chatMessage" placeholder="Tulis pesan..." onkeypress="if(event.key==='Enter') sendMemberChat()">
-            
-            <!-- Tombol Kirim -->
-            <button class="btn-send-chat" onclick="sendMemberChat()" title="Kirim">
-                ➤
-            </button>
+            <button class="btn-send-chat" onclick="sendMemberChat()" title="Kirim">➤</button>
         </div>
     </div>
 </div>
 
-<!-- MODAL TOKEN SCRIPT (BELI & FREE) -->
+<!-- MODAL TOKEN SCRIPT -->
 <div id="tokenModal" class="modal">
     <div class="modal-content">
         <button class="close-btn" onclick="closeModal('tokenModal')">&times;</button>
         <h3>TOKEN SCRIPT MANAGER</h3>
         <p style="margin-bottom:10px;">Pilih opsi pembelian premium atau klaim token gratis di bawah ini:</p>
 
-        <!-- RIWAYAT TOKEN SAYA -->
         <div id="historySection" style="background:rgba(0, 240, 255, 0.1); border:1px dashed #00f0ff; border-radius:10px; padding:12px; margin-bottom:12px; display:none;">
             <h4 style="color:#00f0ff; font-size:0.85rem; margin-bottom:6px;">📋 Token Tersimpan (Perangkat Ini)</h4>
             <div id="historyList"></div>
         </div>
 
-        <!-- OPSI PREMIUM -->
         <div style="background:rgba(3,7,18,0.8); border:1px solid #00f0ff; border-radius:10px; padding:12px; margin-bottom:12px;">
             <h4 style="color:#00f0ff; font-size:0.9rem; margin-bottom:6px;">💳 Pembelian Token Premium</h4>
             <select id="nominalPaket" style="width:100%; padding:8px; background:#030712; color:#fff; border:1px solid #00f0ff; border-radius:6px; margin-bottom:8px;">
@@ -950,7 +928,6 @@
             <div id="qrisResult" style="margin-top:8px;"></div>
         </div>
 
-        <!-- OPSI GRATIS -->
         <div style="background:rgba(3,7,18,0.8); border:1px solid rgba(176,196,222,0.4); border-radius:10px; padding:12px;">
             <h4 style="color:#b0c4de; font-size:0.9rem; margin-bottom:4px;">🎁 Token Gratis (12 Hari)</h4>
             <p style="font-size:0.7rem; color:#b0c4de; margin-bottom:8px;">*Terbatas 1x klaim per Device ID tiap 30 hari</p>
@@ -1002,122 +979,25 @@
 
 <script>
     let currentDeviceId = "";
+    let selectedImageData = null;
 
-    // Ambil Device ID unik pengunjung
     FingerprintJS.load().then(fp => fp.get()).then(result => {
         currentDeviceId = result.visitorId;
     });
 
     function openModal(modalId) {
-        playCyberClick('modal'); // <--- Suara blip futuristik
+        playCyberClick('modal');
         document.getElementById(modalId).style.display = 'block';
         if (modalId === 'chatModal') {
             checkSavedMemberName();
             loadMemberChats();
         }
     }
-let selectedImageData = null;
 
-// Konversi foto ke base64 saat dipilihs
-function handleImageSelect(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    if (file.size > 2 * 1024 * 1024) { // Limit 2MB
-        alert("Ukuran foto maksimal 2MB!");
-        return;
+    function closeModal(modalId) {
+        playCyberClick();
+        document.getElementById(modalId).style.display = 'none';
     }
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        selectedImageData = e.target.result;
-        document.getElementById('imagePreview').src = selectedImageData;
-        document.getElementById('imagePreviewContainer').style.display = 'block';
-    };
-    reader.readAsDataURL(file);
-}
-
-function clearImageSelection() {
-    selectedImageData = null;
-    document.getElementById('chatImageInput').value = '';
-    document.getElementById('imagePreviewContainer').style.display = 'none';
-}
-
-// Memuat Chat dengan Format Balon & Gambar
-async function loadMemberChats() {
-    const container = document.getElementById('chatContainer');
-    const mySavedName = localStorage.getItem('zee_member_name');
-
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/get-chats');
-        const data = await res.json();
-
-        if (data.success && data.chats.length > 0) {
-            container.innerHTML = data.chats.map(chat => {
-                const isSelf = mySavedName && chat.name === mySavedName;
-                const imageTag = chat.image ? `<br><img src="${chat.image}" class="chat-img-preview" onclick="window.open('${chat.image}')">` : '';
-                
-                return `
-                    <div class="chat-bubble ${isSelf ? 'self' : ''}">
-                        <span class="chat-sender">${chat.name}</span>
-                        <div class="chat-text">${chat.message || ''} ${imageTag}</div>
-                        <span class="chat-time">${chat.time}</span>
-                    </div>
-                `;
-            }).join('');
-            container.scrollTop = container.scrollHeight;
-        } else {
-            container.innerHTML = `<p style="font-size:11px; color:#b0c4de; text-align:center;">Belum ada komentar. Jadi yang pertama!</p>`;
-        }
-    } catch (e) {
-        container.innerHTML = `<p style="font-size:11px; color:#ff4444; text-align:center;">Gagal memuat pesan.</p>`;
-    }
-}
-
-// Kirim Chat Teks + Gambar
-async function sendMemberChat() {
-    let name = localStorage.getItem('zee_member_name');
-
-    if (!name) {
-        name = document.getElementById('chatName').value.trim();
-        if (!name) return alert("Masukkan nama kamu terlebih dahulu!");
-        
-        localStorage.setItem('zee_member_name', name);
-        checkSavedMemberName();
-    }
-
-    const message = document.getElementById('chatMessage').value.trim();
-    if (!message && !selectedImageData) return alert("Tulis pesan atau pilih foto!");
-
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/send-chat', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ 
-                name: name, 
-                message: message,
-                image: selectedImageData 
-            })
-        });
-        const data = await res.json();
-
-        if (data.success) {
-            document.getElementById('chatMessage').value = '';
-            clearImageSelection();
-            loadMemberChats();
-        } else {
-            alert("Gagal mengirim pesan.");
-        }
-    } catch (e) {
-        alert("Gagal terhubung ke server.");
-    }
-}
-
-function closeModal(modalId) {
-    playCyberClick(); // <--- Suara klik standar
-    document.getElementById(modalId).style.display = 'none';
-}
-
 
     window.onclick = function(event) {
         let modals = document.getElementsByClassName('modal');
@@ -1129,32 +1009,153 @@ function closeModal(modalId) {
     }
 
     function scrollToCards() {
-        document.getElementById("carGrid").scrollIntoView({
-            behavior: "smooth"
-        });
+        document.getElementById("carGrid").scrollIntoView({ behavior: "smooth" });
     }
 
-    // --- FUNGSI RIWAYAT LOCALSTORAGE ---
+    // --- KONTROL GAMBAR CHAT ---
+    function handleImageSelect(event) {
+        const file = event.target.files[0];
+        if (!file) return;
 
-    // Simpan Token Baru ke LocalStorage
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const maxWidth = 800;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > maxWidth) {
+                    height = Math.round((height * maxWidth) / width);
+                    width = maxWidth;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                selectedImageData = canvas.toDataURL('image/jpeg', 0.6);
+                document.getElementById('imagePreview').src = selectedImageData;
+                document.getElementById('imagePreviewContainer').style.display = 'block';
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function clearImageSelection() {
+        selectedImageData = null;
+        document.getElementById('chatImageInput').value = '';
+        document.getElementById('imagePreviewContainer').style.display = 'none';
+    }
+
+    // --- CHATROOM MEMBER ---
+    function checkSavedMemberName() {
+        const savedName = localStorage.getItem('zee_member_name');
+        const nameInputWrapper = document.getElementById('nameInputWrapper');
+        const savedNameDisplay = document.getElementById('savedNameDisplay');
+        const displayMemberName = document.getElementById('displayMemberName');
+
+        if (savedName) {
+            nameInputWrapper.style.display = 'none';
+            savedNameDisplay.style.display = 'flex';
+            displayMemberName.innerText = savedName;
+        } else {
+            nameInputWrapper.style.display = 'block';
+            savedNameDisplay.style.display = 'none';
+        }
+    }
+
+    function resetMemberName() {
+        if (confirm("Apakah kamu yakin ingin mengganti nama pengirim?")) {
+            localStorage.removeItem('zee_member_name');
+            document.getElementById('chatName').value = '';
+            checkSavedMemberName();
+        }
+    }
+
+    async function loadMemberChats() {
+        const container = document.getElementById('chatContainer');
+        const mySavedName = localStorage.getItem('zee_member_name');
+
+        try {
+            const res = await fetch('https://zee-backend-black.vercel.app/api/get-chats');
+            const data = await res.json();
+
+            if (data.success && data.chats.length > 0) {
+                container.innerHTML = data.chats.map(chat => {
+                    const isSelf = mySavedName && chat.name === mySavedName;
+                    const imageTag = chat.image ? `<br><img src="${chat.image}" class="chat-img-preview" onclick="window.open('${chat.image}')">` : '';
+                    
+                    return `
+                        <div class="chat-bubble ${isSelf ? 'self' : ''}">
+                            <span class="chat-sender">${chat.name}</span>
+                            <div class="chat-text">${chat.message || ''} ${imageTag}</div>
+                            <span class="chat-time">${chat.time}</span>
+                        </div>
+                    `;
+                }).join('');
+                container.scrollTop = container.scrollHeight;
+            } else {
+                container.innerHTML = `<p style="font-size:11px; color:#b0c4de; text-align:center;">Belum ada komentar. Jadi yang pertama!</p>`;
+            }
+        } catch (e) {
+            container.innerHTML = `<p style="font-size:11px; color:#ff4444; text-align:center;">Gagal memuat pesan.</p>`;
+        }
+    }
+
+    async function sendMemberChat() {
+        let name = localStorage.getItem('zee_member_name');
+
+        if (!name) {
+            name = document.getElementById('chatName').value.trim();
+            if (!name) return alert("Masukkan nama kamu terlebih dahulu!");
+            
+            localStorage.setItem('zee_member_name', name);
+            checkSavedMemberName();
+        }
+
+        const message = document.getElementById('chatMessage').value.trim();
+        if (!message && !selectedImageData) return alert("Tulis pesan atau pilih foto!");
+
+        try {
+            const res = await fetch('https://zee-backend-black.vercel.app/api/send-chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ 
+                    name: name, 
+                    message: message,
+                    image: selectedImageData 
+                })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                document.getElementById('chatMessage').value = '';
+                clearImageSelection();
+                loadMemberChats();
+            } else {
+                alert("Gagal mengirim pesan.");
+            }
+        } catch (e) {
+            alert("Gagal terhubung ke server.");
+        }
+    }
+
+    // --- RIWAYAT TOKEN ---
     function saveTokenToHistory(token, expired, type = "Free/Paid") {
         let history = JSON.parse(localStorage.getItem('zee_token_history')) || [];
-        
         const exists = history.some(item => item.token === token);
         if (!exists) {
-            history.unshift({
-                token: token,
-                expired: expired,
-                type: type,
-                date: new Date().toLocaleDateString('id-ID')
-            });
+            history.unshift({ token: token, expired: expired, type: type, date: new Date().toLocaleDateString('id-ID') });
             if (history.length > 5) history.pop();
             localStorage.setItem('zee_token_history', JSON.stringify(history));
         }
         renderTokenHistory();
     }
 
-    // Tampilkan Riwayat Token di Modal
     function renderTokenHistory() {
         const history = JSON.parse(localStorage.getItem('zee_token_history')) || [];
         const historySection = document.getElementById('historySection');
@@ -1180,68 +1181,42 @@ function closeModal(modalId) {
     }
 
     function copyToClipboard(text) {
-    playCyberClick('success'); // <--- Suara chime sukses
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => {
-            alert("Token berhasil disalin!");
-        });
-    } else {
-        fallbackCopyTextToClipboard(text);
+        playCyberClick('success');
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => alert("Token berhasil disalin!"));
+        } else {
+            fallbackCopyTextToClipboard(text);
+        }
     }
-}
 
-
-    // Fungsi Cadangan Salin Token
     function fallbackCopyTextToClipboard(text) {
         const textArea = document.createElement("textarea");
         textArea.value = text;
-        
         textArea.style.top = "0";
         textArea.style.left = "0";
         textArea.style.position = "fixed";
-
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-
         try {
-            const successful = document.execCommand('copy');
-            if (successful) {
+            if (document.execCommand('copy')) {
                 alert("Token berhasil disalin!");
             } else {
-                alert("Gagal menyalin token secara otomatis.");
+                alert("Gagal menyalin token.");
             }
         } catch (err) {
             alert("Browser tidak mendukung salin otomatis.");
         }
-
         document.body.removeChild(textArea);
     }
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderTokenHistory();
-
-    // Jalankan efek suara pada seluruh elemen berkelas .btn, .rent, .modal-btn
-    document.querySelectorAll('.btn, .rent, .modal-btn, .apply').forEach(button => {
-        button.addEventListener('click', () => {
-            playCyberClick();
-        });
-    });
-});
-
-
-    // Fungsi Pencarian Kartu Real-Time
+    // --- FITUR FILTER & SORT ---
     function searchCards() {
         const input = document.getElementById('searchInput').value.toLowerCase();
         const cards = document.querySelectorAll('.car-card');
-
         cards.forEach(card => {
             const name = card.getAttribute('data-name').toLowerCase();
-            if (name.includes(input)) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.display = name.includes(input) ? 'flex' : 'none';
         });
     }
 
@@ -1256,43 +1231,33 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach(card => {
             const category = card.getAttribute('data-category');
             let show = false;
-
             if (category === 'script' && scriptChecked) show = true;
             if (category === 'token' && tokenChecked) show = true;
             if (category === 'mod' && modChecked) show = true;
             if (category === 'wa' && waChecked) show = true;
             if (category === 'yt' && ytChecked) show = true;
-
-            if (show) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.display = show ? 'flex' : 'none';
         });
     }
 
     function sortCards(value) {
         const grid = document.getElementById("carGrid");
         const cards = Array.from(grid.querySelectorAll(".car-card"));
-
         if (value === "nameAsc") {
             cards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
         }
-
         cards.forEach(card => grid.appendChild(card));
     }
 
+    // --- TRANSAKSI TOKEN ---
     function bayarQRIS() {
         document.getElementById("qrisResult").innerHTML = `
             <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 12px; border-radius: 8px; margin-top: 10px;">
                 <p style="color:#00f0ff; font-weight:bold; font-size:11px; margin-bottom:6px;">1. Masukkan Nama Pembeli:</p>
                 <input type="text" id="buyerInput" placeholder="Contoh: ZeeUser" style="width:90%; padding:6px; background:#000; border:1px solid #00f0ff; color:#fff; border-radius:4px; font-size:11px; text-align:center;">
-                
                 <p style="color:#b0c4de; font-size:10px; margin:8px 0 4px 0;">2. Klik Bayar & Pakai Nama Yang Sama di Saweria:</p>
                 <button onclick="bukaSaweria()" class="modal-btn" style="padding: 8px 16px; font-size: 11px; margin: 0 auto;">BAYAR SEKARANG ➔</button>
-
                 <hr style="border:0.5px solid rgba(0,240,255,0.3); margin:10px 0;">
-                
                 <p style="color:#00ff66; font-size:10px; margin-bottom:4px;">3. Sudah Bayar? Klik Tombol di Bawah:</p>
                 <button onclick="cekTokenOtomatis()" class="modal-btn" style="background:#00ff66; color:#000; padding:6px 12px; font-size:11px; font-weight:bold; margin: 0 auto;">CEK TOKEN SAYA</button>
                 <div id="tokenOutput" style="margin-top:8px;"></div>
@@ -1317,17 +1282,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch('https://zee-backend-black.vercel.app/api/check-token', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                // Kirim Nama Pembeli DAN Device ID ke Backend
-                body: JSON.stringify({ 
-                    buyerName: nama,
-                    deviceId: currentDeviceId 
-                })
+                body: JSON.stringify({ buyerName: nama, deviceId: currentDeviceId })
             });
             const data = await res.json();
 
             if (data.success) {
                 saveTokenToHistory(data.token, data.expired, "Premium");
-
                 document.getElementById("tokenOutput").innerHTML = `
                     <p style="color:#00ff66; font-weight:bold; font-size:12px; margin:0;">Token Berhasil Ditemukan!</p>
                     <p style="font-size:13px; color:#fff; margin:4px 0;">Kode: <b style="color:#00f0ff;">${data.token}</b></p>
@@ -1341,7 +1301,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Gagal mengambil data token.");
         }
     }
-
 
     async function klaimFree() {
         if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
@@ -1357,11 +1316,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (data.success) {
                 saveTokenToHistory(data.token, data.expired, "Gratis");
-
-                const statusLabel = data.isAlreadyClaimed 
-                    ? "<span style='color:#ffaa00;'>Token Anda Saat Ini:</span>" 
-                    : "<span style='color:#00ff66;'>Klaim Sukses!</span>";
-
+                const statusLabel = data.isAlreadyClaimed ? "<span style='color:#ffaa00;'>Token Anda Saat Ini:</span>" : "<span style='color:#00ff66;'>Klaim Sukses!</span>";
                 document.getElementById("freeResult").innerHTML = `
                     <p style="font-size:12px; font-weight:bold; margin-bottom:4px;">${statusLabel}</p>
                     <p style="font-size:13px; color:#fff; margin:2px 0;">Token: <b style="color:#00f0ff;">${data.token}</b></p>
@@ -1377,127 +1332,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// Cek Nama Permanen saat Modal Chat Dibuka
-function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-    if (modalId === 'chatModal') {
-        checkSavedMemberName();
-        loadMemberChats();
-    }
-}
+    // --- AUDIO UI ---
+    const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+    const modalSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
+    const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3');
 
-// Fungsi Memeriksa Apakah Nama Sudah Tersimpan Permanen di Browser
-function checkSavedMemberName() {
-    const savedName = localStorage.getItem('zee_member_name');
-    const nameInputWrapper = document.getElementById('nameInputWrapper');
-    const savedNameDisplay = document.getElementById('savedNameDisplay');
-    const displayMemberName = document.getElementById('displayMemberName');
+    clickSound.volume = 0.3;
+    modalSound.volume = 0.4;
+    successSound.volume = 0.4;
 
-    if (savedName) {
-        nameInputWrapper.style.display = 'none';
-        savedNameDisplay.style.display = 'flex';
-        displayMemberName.innerText = savedName;
-    } else {
-        nameInputWrapper.style.display = 'block';
-        savedNameDisplay.style.display = 'none';
-    }
-}
-
-// Fungsi Reset / Ganti Nama
-function resetMemberName() {
-    if (confirm("Apakah kamu yakin ingin mengganti nama pengirim?")) {
-        localStorage.removeItem('zee_member_name');
-        document.getElementById('chatName').value = '';
-        checkSavedMemberName();
-    }
-}
-
-// Fungsi Memuat Komentar dari Backend
-async function loadMemberChats() {
-    const container = document.getElementById('chatContainer');
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/get-chats');
-        const data = await res.json();
-
-        if (data.success && data.chats.length > 0) {
-            container.innerHTML = data.chats.map(chat => `
-                <div class="chat-item">
-                    <span class="chat-sender">👤 ${chat.name}</span>
-                    <span class="chat-time">${chat.time}</span>
-                    <div class="chat-text">${chat.message}</div>
-                </div>
-            `).join('');
-            container.scrollTop = container.scrollHeight;
-        } else {
-            container.innerHTML = `<p style="font-size:11px; color:#b0c4de; text-align:center;">Belum ada komentar. Jadi yang pertama!</p>`;
-        }
-    } catch (e) {
-        container.innerHTML = `<p style="font-size:11px; color:#ff4444; text-align:center;">Gagal memuat pesan.</p>`;
-    }
-}
-
-// Fungsi Kirim Pesan dengan Nama Permanen
-async function sendMemberChat() {
-    let name = localStorage.getItem('zee_member_name');
-
-    // Jika nama belum disimpan, ambil dari input dan simpan permanen
-    if (!name) {
-        name = document.getElementById('chatName').value.trim();
-        if (!name) return alert("Masukkan nama kamu terlebih dahulu!");
-        
-        // Simpan ke LocalStorage HP agar Permanen
-        localStorage.setItem('zee_member_name', name);
-        checkSavedMemberName();
+    function playCyberClick(type = 'default') {
+        try {
+            if (type === 'modal') {
+                modalSound.currentTime = 0;
+                modalSound.play().catch(() => {});
+            } else if (type === 'success') {
+                successSound.currentTime = 0;
+                successSound.play().catch(() => {});
+            } else {
+                clickSound.currentTime = 0;
+                clickSound.play().catch(() => {});
+            }
+        } catch (e) {}
     }
 
-    const message = document.getElementById('chatMessage').value.trim();
-    if (!message) return alert("Tulis komentar terlebih dahulu!");
-
-    try {
-        const res = await fetch('https://zee-backend-black.vercel.app/api/send-chat', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ name, message })
+    document.addEventListener('DOMContentLoaded', () => {
+        renderTokenHistory();
+        document.querySelectorAll('.btn, .rent, .modal-btn, .apply').forEach(button => {
+            button.addEventListener('click', () => playCyberClick());
         });
-        const data = await res.json();
-
-        if (data.success) {
-            document.getElementById('chatMessage').value = '';
-            loadMemberChats();
-        } else {
-            alert("Gagal mengirim pesan.");
-        }
-    } catch (e) {
-        alert("Gagal terhubung ke server.");
-    }
-}
-// --- FUNGSI EFEK SUARA ASLI (FILE MP3/WAV) ---
-const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'); // Suara Klik Cyber UI
-const modalSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'); // Suara Blip Pop-up
-const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3'); // Suara Sukses/Chime
-
-// Set volume agar tidak terlalu keras
-clickSound.volume = 0.3;
-modalSound.volume = 0.4;
-successSound.volume = 0.4;
-
-function playCyberClick(type = 'default') {
-    try {
-        if (type === 'modal') {
-            modalSound.currentTime = 0;
-            modalSound.play().catch(() => {});
-        } else if (type === 'success') {
-            successSound.currentTime = 0;
-            successSound.play().catch(() => {});
-        } else {
-            clickSound.currentTime = 0;
-            clickSound.play().catch(() => {});
-        }
-    } catch (e) {
-        // Abaikan jika browser memblokir autopolicy audio
-    }
-}
-
+    });
 </script>
 
 </body>
