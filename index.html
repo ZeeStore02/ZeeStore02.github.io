@@ -1276,7 +1276,7 @@
     async function cekTokenOtomatis() {
         const nama = document.getElementById("buyerInput").value.trim();
         if (!nama) return alert("Masukkan Nama Pembeli yang kamu pakai saat bayar!");
-        if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat, tunggu sebentar...");
+        if (!currentDeviceId) return alert("tunggu sebentar...");
 
         document.getElementById("tokenOutput").innerHTML = "<p style='color:#00f0ff; font-size:11px;'>Mengecek pembayaran...</p>";
 
@@ -1305,7 +1305,7 @@
     }
 
     async function klaimFree() {
-        if (!currentDeviceId) return alert("Sedang mendeteksi ID perangkat...");
+        if (!currentDeviceId) return alert("tunggu sebentar.....");
         document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
 
         try {
