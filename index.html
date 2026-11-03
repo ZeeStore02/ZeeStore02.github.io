@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ZEE STORE - Official Hub & Script</title>
     <meta name="theme-color" content="#000000">
     <meta property="og:title" content="ZEE STORE - Official Link & Script">
@@ -450,7 +450,7 @@
         }
 
         /* ========================================================= */
-        /* 1. OVERLAY & STYLING MODAL UMUM (Script, Token, WA, YT)   */
+        /* 1. STYLING OVERLAY & MODAL UMUM (PAS DI TENGAH LAYAR)     */
         /* ========================================================= */
         .modal {
             display: none;
@@ -464,22 +464,30 @@
             z-index: 9999;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            
+            /* DUA BARIS INI MEMAKSA MODAL BIASA PAS DI TENGAH LAYAR */
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-content {
-            background: rgba(3, 15, 30, 0.95);
+            background: rgba(3, 15, 30, 0.98);
             border: 2px solid #00f0ff;
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
             border-radius: 16px;
             padding: 22px 18px;
             position: relative;
-            margin: 12vh auto;
-            width: 88%;
+            margin: 0 auto !important; /* Menghilangkan efek margin atas */
+            width: 85%;
             max-width: 340px;
             text-align: center;
             box-sizing: border-box;
+            height: auto !important;
+            max-height: 85vh;
+            overflow-y: auto;
             animation: modalPop 0.3s ease-out;
         }
+
 
         @keyframes modalPop {
             0% { transform: scale(0.85); opacity: 0; }
@@ -532,31 +540,39 @@
         }
 
         /* ========================================================= */
-        /* 2. KHUSUS MODAL CHAT (BOTTOM SHEET: DARI TENGAH KE BAWAH)  */
+        /* FIX TOTAL KHUSUS MODAL CHAT (BOTTOM SHEET PRESISI HP)     */
         /* ========================================================= */
         #chatModal {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            padding: 0;
             overflow: hidden;
         }
 
         #chatModal .modal-content {
-            margin: 0;
-            width: 100%;
-            max-width: 480px;
-            height: 75vh;
-            max-height: 85vh;
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 480px !important;
+            height: 75vh !important;
+            max-height: 80vh !important;
             border-bottom: none;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
-            padding: 16px 14px 20px 14px;
+            padding: 16px 14px 18px 14px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             animation: slideUp 0.3s ease-out;
         }
 
@@ -565,9 +581,11 @@
             100% { transform: translateY(0); }
         }
 
+        /* Kotak Chat yang Aman dari Potongan Tombol Input */
         .chat-box {
             flex: 1;
-            min-height: 0;
+            height: auto;
+            min-height: 150px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             background: #060b13;
@@ -590,6 +608,7 @@
             width: fit-content;
             word-break: break-word;
             position: relative;
+            text-align: left;
         }
 
         .chat-bubble.self {
@@ -636,6 +655,7 @@
             border: 1px solid rgba(0, 240, 255, 0.3);
             border-radius: 25px;
             padding: 5px 8px 5px 12px;
+            flex-shrink: 0;
         }
 
         .chat-input-bar input[type="text"] {
@@ -677,6 +697,7 @@
             justify-content: center;
             cursor: pointer;
             font-size: 14px;
+            flex-shrink: 0;
         }
 
         @media(max-width: 800px) {
@@ -913,7 +934,7 @@
     <div class="modal-content">
         <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
         
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
             <span style="font-size: 18px; color: #00f0ff;">💬</span>
             <h3 style="margin: 0; font-size: 16px; letter-spacing: 1px;">CHAT</h3>
         </div>
@@ -1029,16 +1050,17 @@
     function openModal(modalId) {
         playCyberClick('modal');
         
+        // Membuka modal dengan flex agar perata tengah CSS berfungsi
+        document.getElementById(modalId).style.display = 'flex';
+        
         if (modalId === 'chatModal') {
-            document.getElementById(modalId).style.display = 'flex';
             checkSavedMemberName();
             loadMemberChats();
-        } else {
-            document.getElementById(modalId).style.display = 'block';
         }
         
         document.body.style.overflow = 'hidden';
     }
+
 
     function closeModal(modalId) {
         playCyberClick();
