@@ -426,6 +426,32 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.8);
         }
 
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #00f0ff;
+            color: #000;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.5);
+            z-index: 999;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.8);
+        }
+
+        /* ========================================================= */
+        /* 1. OVERLAY & STYLING MODAL UMUM (Script, Token, WA, YT)   */
+        /* ========================================================= */
         .modal {
             display: none;
             position: fixed;
@@ -433,9 +459,11 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
             z-index: 9999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .modal-content {
@@ -444,19 +472,18 @@
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
             border-radius: 16px;
             padding: 22px 18px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            max-width: 320px;
+            position: relative;
+            margin: 12vh auto;
+            width: 88%;
+            max-width: 340px;
             text-align: center;
+            box-sizing: border-box;
             animation: modalPop 0.3s ease-out;
         }
 
         @keyframes modalPop {
-            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .modal-content h3 {
@@ -504,70 +531,54 @@
             cursor: pointer;
         }
 
-        @media(max-width: 800px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-            .car-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media(max-width: 550px) {
-            .navbar {
-                flex-wrap: wrap;
-            }
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            .car-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-banner {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-        }
-
-        .floating-chat {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #00f0ff;
-            color: #000;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
+        /* ========================================================= */
+        /* 2. KHUSUS MODAL CHAT (BOTTOM SHEET: DARI TENGAH KE BAWAH)  */
+        /* ========================================================= */
+        #chatModal {
+            display: none;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.5);
-            z-index: 999;
-            cursor: pointer;
-            transition: 0.3s;
+            padding: 0;
+            overflow: hidden;
         }
 
-        .floating-chat:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.8);
+        #chatModal .modal-content {
+            margin: 0;
+            width: 100%;
+            max-width: 480px;
+            height: 75vh;
+            max-height: 85vh;
+            border-bottom: none;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            padding: 16px 14px 20px 14px;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.3s ease-out;
         }
 
-        /* MODAL CHATROOM MEMBER ALA KIWOLASU */
+        @keyframes slideUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+
         .chat-box {
-            max-height: 280px;
-            height: 280px;
+            flex: 1;
+            min-height: 0;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             background: #060b13;
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            border: 1px solid rgba(0, 240, 255, 0.3);
             border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            overscroll-behavior: contain;
         }
 
         .chat-bubble {
@@ -666,6 +677,34 @@
             justify-content: center;
             cursor: pointer;
             font-size: 14px;
+        }
+
+        @media(max-width: 800px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            .car-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 550px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .car-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-banner {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -871,7 +910,7 @@
 
 <!-- MODAL CHATROOM MEMBER -->
 <div id="chatModal" class="modal">
-    <div class="modal-content" style="max-width: 360px;">
+    <div class="modal-content">
         <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
         
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
@@ -989,16 +1028,22 @@
 
     function openModal(modalId) {
         playCyberClick('modal');
-        document.getElementById(modalId).style.display = 'block';
+        
         if (modalId === 'chatModal') {
+            document.getElementById(modalId).style.display = 'flex';
             checkSavedMemberName();
             loadMemberChats();
+        } else {
+            document.getElementById(modalId).style.display = 'block';
         }
+        
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal(modalId) {
         playCyberClick();
         document.getElementById(modalId).style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 
     window.onclick = function(event) {
@@ -1006,6 +1051,7 @@
         for (let i = 0; i < modals.length; i++) {
             if (event.target === modals[i]) {
                 modals[i].style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         }
     }
