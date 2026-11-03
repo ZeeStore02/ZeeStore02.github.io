@@ -540,7 +540,7 @@
         }
 
         /* ========================================================= */
-        /* FIX TOTAL KHUSUS MODAL CHAT (BOTTOM SHEET PRESISI HP)     */
+        /* FIX MODAL CHAT: RESPONSIVE HP & DESKTOP MODE              */
         /* ========================================================= */
         #chatModal {
             display: none;
@@ -553,11 +553,12 @@
             backdrop-filter: blur(5px);
             z-index: 9999;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: flex-end; /* Mode HP (Default): Rapat di bawah */
             align-items: center;
             overflow: hidden;
         }
 
+        /* Tampilan Mode HP / Layar Kecil (Tetap Bottom Sheet) */
         #chatModal .modal-content {
             margin: 0 !important;
             width: 100% !important;
@@ -575,6 +576,25 @@
             justify-content: space-between;
             animation: slideUp 0.3s ease-out;
         }
+
+        /* Tampilan Khusus Mode Situs Desktop / PC (Auto Pop-up di Tengah) */
+        @media (min-width: 768px) {
+            #chatModal {
+                justify-content: center !important; /* Pindah posisi modal ke tengah vertikal */
+            }
+
+            #chatModal .modal-content {
+                width: 90% !important;
+                max-width: 500px !important;   /* Lebar pas tidak terlalu kurus */
+                height: 600px !important;      /* Tinggi terkunci, tidak memanjang ke atas */
+                max-height: 85vh !important;
+                border-radius: 16px !important; /* Sudut membulat rapi */
+                border: 2px solid #00f0ff !important;
+                box-shadow: 0 0 30px rgba(0, 240, 255, 0.5) !important;
+                animation: modalPop 0.3s ease-out !important;
+            }
+        }
+
 
         @keyframes slideUp {
             0% { transform: translateY(100%); }
