@@ -636,7 +636,7 @@
         document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
 
         try {
-            // Cek saklar terlebih dahulu dari Realtime Database
+            // Cek saklar dari Realtime Database
             const statusRes = await fetch(`${DB_BASE_URL}/settings/free_claim_status.json`);
             const claimStatus = await statusRes.json();
 
