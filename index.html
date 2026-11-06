@@ -771,6 +771,15 @@
 
         <div class="user">ZS</div>
     </header>
+    
+    <!-- OVERLAY TAMPILAN MAINTENANCE / OFFLINE -->
+    <div id="offlineOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #030712; z-index: 99999; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <div style="border: 2px solid #ff4444; border-radius: 16px; padding: 30px; background: rgba(3, 15, 30, 0.95); max-width: 400px; box-shadow: 0 0 30px rgba(255, 68, 68, 0.5);">
+            <h1 style="color: #ff4444; font-size: 40px; margin-bottom: 10px;">⚠️</h1>
+            <h2 style="color: #ff4444; margin-bottom: 10px;">WEBSITE OFFLINE</h2>
+            <p style="color: #b0c4de; font-size: 14px; line-height: 1.5;">Website sedang dalam perbaikan / maintenance sementara oleh Admin ZEE STORE. Silakan kembali lagi nanti!</p>
+        </div>
+    </div>
 
     <!-- HERO SECTION DENGAN VIDEO BACKGROUND -->
     <section class="hero">
@@ -1462,6 +1471,33 @@
                 .catch(err => console.error('Monetag SW Failed:', err));
         });
     }
+    const DB_BASE_URL = "https://token-pengguna-default-rtdb.asia-southeast1.firebasedatabase.app";
+
+    async function checkWebsiteStatus() {
+        try {
+            const res = await fetch(`${DB_BASE_URL}/settings/status.json`);
+            const status = await res.json();
+        
+            if (status === "offline") {
+                // Tampilkan layar offline & matikan scroll halaman
+                document.getElementById("offlineOverlay").style.display = "flex";
+                document.body.style.overflow = "hidden";
+            } else {
+                // Sembunyikan layar offline jika status online
+                document.getElementById("offlineOverlay").style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        } catch (e) {
+            console.error("Gagal mengecek status website:", e);
+        }
+    }
+
+// Cek status langsung saat halaman dibuka
+checkWebsiteStatus();
+
+// Cek otomatis setiap 5 detik agar saklar berubah secara real-time
+setInterval(checkWebsiteStatus, 5000);
+
 </script>
 </body>
 </html>
