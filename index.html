@@ -15,746 +15,87 @@
     <script src="https://quge5.com/88/tag.min.js" data-zone="304824" async data-cfasync="false"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #030712; color: #ffffff; min-height: 100vh; }
+        .app { max-width: 1200px; margin: auto; padding: 18px; }
+        .navbar { background: linear-gradient(rgba(3, 15, 30, 0.3), rgba(3, 15, 30, 0.3)), url('anime.jpg') center/cover no-repeat; backdrop-filter: blur(10px); border: 1px solid rgba(0, 240, 255, 0.3); color: white; padding: 15px 22px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; gap: 20px; box-shadow: 0 5px 20px rgba(0, 240, 255, 0.15); }
+        .logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: bold; color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .logo-icon { font-size: 26px; display: inline-block; animation: spinLogo 3s linear infinite; }
+        @keyframes spinLogo { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .nav-links { display: flex; align-items: center; gap: 8px; }
+        .nav-links a { color: #ffffff; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-size: 14px; transition: 0.2s; }
+        .nav-links a:hover, .nav-links a.active { background: rgba(0, 240, 255, 0.2); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.4); font-weight: bold; }
+        .user { width: 38px; height: 38px; border-radius: 50%; background: rgba(0, 240, 255, 0.2); border: 1px solid #00f0ff; color: #00f0ff; display: flex; justify-content: center; align-items: center; font-size: 16px; font-weight: bold; box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+        .hero { margin-top: 15px; min-height: 290px; border-radius: 15px; padding: 35px; color: white; position: relative; overflow: hidden; background: #030712; border: 1px solid rgba(0, 240, 255, 0.3); }
+        .hero-bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(3, 7, 18, 0.3), rgba(3, 7, 18, 0.3)); z-index: 2; }
+        .hero-content { position: relative; z-index: 3; max-width: 450px; }
+        .hero h2 { font-size: 42px; line-height: 1.1; margin-bottom: 15px; }
+        .hero h2 span { color: #00f0ff; text-shadow: 0 0 15px rgba(0, 240, 255, 0.7); }
+        .hero p { font-size: 16px; line-height: 1.4; margin-bottom: 20px; color: #b0c4de; }
+        .btn { border: 1px solid #00f0ff; background: rgba(0, 240, 255, 0.2); color: #fff; padding: 12px 24px; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
+        .btn:hover { background: rgba(0, 240, 255, 0.5); box-shadow: 0 0 20px rgba(0, 240, 255, 0.8); }
+        .main { background: linear-gradient(rgba(3, 7, 18, 0.4), rgba(3, 7, 18, 0.5)), url('anime1.jpg') center/cover no-repeat; backdrop-filter: blur(10px); margin-top: 15px; border-radius: 15px; padding: 22px; border: 1px solid rgba(0, 240, 255, 0.3); }
+        .section-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+        .section-title h2 { color: #00f0ff; font-size: 26px; text-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+        .search-container { margin-bottom: 18px; }
+        .search-input { width: 100%; padding: 12px 18px; background: rgba(3, 7, 18, 0.9); border: 1px solid rgba(0, 240, 255, 0.4); border-radius: 10px; color: white; font-size: 14px; outline: none; }
+        .search-input:focus { border-color: #00f0ff; box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+        .sort { padding: 10px 15px; border: 1px solid rgba(0, 240, 255, 0.4); border-radius: 8px; background: rgba(3, 7, 18, 0.9); color: white; cursor: pointer; }
+        .content { display: grid; grid-template-columns: 240px 1fr; gap: 20px; }
+        .filters { border: 1px solid rgba(0, 240, 255, 0.3); background: rgba(3, 7, 18, 0.6); border-radius: 12px; padding: 18px; height: fit-content; }
+        .filters h3 { margin-bottom: 15px; color: #00f0ff; font-size: 16px; }
+        .filter-title { font-weight: bold; margin: 16px 0 10px; font-size: 14px; color: #fff; }
+        .checkbox { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 13px; color: #b0c4de; cursor: pointer; }
+        .checkbox input { width: 16px; height: 16px; accent-color: #00f0ff; cursor: pointer; }
+        .apply { width: 100%; background: rgba(0, 240, 255, 0.2); color: white; border: 1px solid #00f0ff; border-radius: 8px; padding: 11px; margin-top: 15px; cursor: pointer; font-weight: bold; }
+        .car-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+        .car-card { border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 12px; padding: 12px; background: rgba(3, 7, 18, 0.7); transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .car-card:hover { transform: translateY(-4px); border-color: #00f0ff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+        .car-image { height: 130px; border-radius: 10px; background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(3, 15, 30, 0.8)); border: 1px solid rgba(0, 240, 255, 0.2); display: flex; justify-content: center; align-items: center; font-size: 70px; position: relative; }
+        .badge { position: absolute; top: 8px; right: 8px; background: rgba(0, 240, 255, 0.3); border: 1px solid #00f0ff; color: #00f0ff; border-radius: 6px; padding: 4px 8px; font-size: 10px; font-weight: bold; }
+        .car-card h3 { color: #ffffff; margin: 12px 2px 6px; font-size: 16px; }
+        .details { display: flex; gap: 12px; font-size: 12px; color: #b0c4de; margin-bottom: 12px; }
+        .price { font-size: 16px; color: #00f0ff; font-weight: bold; margin-bottom: 10px; }
+        .rent { width: 100%; background: rgba(0, 240, 255, 0.2); border: 1px solid #00f0ff; color: white; border-radius: 8px; padding: 10px; font-weight: bold; cursor: pointer; }
+        .footer-banner { margin-top: 20px; border-radius: 13px; background: linear-gradient(90deg, rgba(3, 15, 30, 0.9), rgba(0, 240, 255, 0.2)); border: 1px solid rgba(0, 240, 255, 0.4); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .floating-wa { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5); z-index: 999; text-decoration: none; }
+        .floating-chat { position: fixed; bottom: 20px; left: 20px; background: #00f0ff; color: #000; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 240, 255, 0.5); z-index: 999; cursor: pointer; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #030712;
-            color: #ffffff;
-            min-height: 100vh;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 9999; overflow-y: auto; justify-content: center; align-items: center; }
+        .modal-content { background: rgba(3, 15, 30, 0.98); border: 2px solid #00f0ff; box-shadow: 0 0 30px rgba(0, 240, 255, 0.7); border-radius: 16px; padding: 22px 18px; position: relative; margin: 0 auto !important; width: 85%; max-width: 340px; text-align: center; box-sizing: border-box; height: auto !important; max-height: 85vh; overflow-y: auto; animation: modalPop 0.3s ease-out; }
+        @keyframes modalPop { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .modal-content h3 { margin-top: 0; color: #00f0ff; font-size: 1.1rem; letter-spacing: 1px; }
+        .modal-content p { font-size: 0.8rem; color: #b0c4de; margin-bottom: 15px; }
+        .modal-btn { display: block; width: fit-content; margin: 0 auto 8px auto; background: rgba(0, 240, 255, 0.2); border: 1px solid #00f0ff; color: #fff; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.85rem; cursor: pointer; }
+        .close-btn { position: absolute; top: 10px; right: 14px; background: none; border: none; color: #fff; font-size: 1.3rem; cursor: pointer; }
 
-        .app {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px;
-        }
-
-        .navbar {
-            background: linear-gradient(rgba(3, 15, 30, 0.3), rgba(3, 15, 30, 0.3)), url('anime.jpg') center/cover no-repeat;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            color: white;
-            padding: 15px 22px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            box-shadow: 0 5px 20px rgba(0, 240, 255, 0.15);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 22px;
-            font-weight: bold;
-            color: #00f0ff;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-        }
-
-        .logo-icon {
-            font-size: 26px;
-            display: inline-block;
-            animation: spinLogo 3s linear infinite;
-        }
-
-        @keyframes spinLogo {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(0, 240, 255, 0.2);
-            color: #00f0ff;
-            border: 1px solid rgba(0, 240, 255, 0.4);
-            font-weight: bold;
-        }
-
-        .user {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(0, 240, 255, 0.2);
-            border: 1px solid #00f0ff;
-            color: #00f0ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
-        }
-
-        .hero {
-            margin-top: 15px;
-            min-height: 290px;
-            border-radius: 15px;
-            padding: 35px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            background: #030712;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-        }
-
-        .hero-bg-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(3, 7, 18, 0.3), rgba(3, 7, 18, 0.3));
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 450px;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            line-height: 1.1;
-            margin-bottom: 15px;
-        }
-
-        .hero h2 span {
-            color: #00f0ff;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
-        }
-
-        .hero p {
-            font-size: 16px;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            color: #b0c4de;
-        }
-
-        .btn {
-            border: 1px solid #00f0ff;
-            background: rgba(0, 240, 255, 0.2);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: rgba(0, 240, 255, 0.5);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
-        }
-
-        .main {
-            background: linear-gradient(rgba(3, 7, 18, 0.4), rgba(3, 7, 18, 0.5)), url('anime1.jpg') center/cover no-repeat;
-            backdrop-filter: blur(10px);
-            margin-top: 15px;
-            border-radius: 15px;
-            padding: 22px;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-        }
-
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .section-title h2 {
-            color: #00f0ff;
-            font-size: 26px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
-        }
-
-        .search-container {
-            margin-bottom: 18px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 18px;
-            background: rgba(3, 7, 18, 0.9);
-            border: 1px solid rgba(0, 240, 255, 0.4);
-            border-radius: 10px;
-            color: white;
-            font-size: 14px;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .search-input:focus {
-            border-color: #00f0ff;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
-        }
-
-        .sort {
-            padding: 10px 15px;
-            border: 1px solid rgba(0, 240, 255, 0.4);
-            border-radius: 8px;
-            background: rgba(3, 7, 18, 0.9);
-            color: white;
-            cursor: pointer;
-        }
-
-        .content {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 20px;
-        }
-
-        .filters {
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            background: rgba(3, 7, 18, 0.6);
-            border-radius: 12px;
-            padding: 18px;
-            height: fit-content;
-        }
-
-        .filters h3 {
-            margin-bottom: 15px;
-            color: #00f0ff;
-            font-size: 16px;
-        }
-
-        .filter-title {
-            font-weight: bold;
-            margin: 16px 0 10px;
-            font-size: 14px;
-            color: #fff;
-        }
-
-        .checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 10px 0;
-            font-size: 13px;
-            color: #b0c4de;
-            cursor: pointer;
-        }
-
-        .checkbox input {
-            width: 16px;
-            height: 16px;
-            accent-color: #00f0ff;
-            cursor: pointer;
-        }
-
-        .apply {
-            width: 100%;
-            background: rgba(0, 240, 255, 0.2);
-            color: white;
-            border: 1px solid #00f0ff;
-            border-radius: 8px;
-            padding: 11px;
-            margin-top: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .apply:hover {
-            background: rgba(0, 240, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
-        }
-
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .car-card {
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 12px;
-            padding: 12px;
-            background: rgba(3, 7, 18, 0.7);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .car-card:hover {
-            transform: translateY(-4px);
-            border-color: #00f0ff;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-        }
-
-        .car-image {
-            height: 130px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(3, 15, 30, 0.8));
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 70px;
-            position: relative;
-        }
-
-        .badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(0, 240, 255, 0.3);
-            border: 1px solid #00f0ff;
-            color: #00f0ff;
-            border-radius: 6px;
-            padding: 4px 8px;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .car-card h3 {
-            color: #ffffff;
-            margin: 12px 2px 6px;
-            font-size: 16px;
-        }
-
-        .details {
-            display: flex;
-            gap: 12px;
-            font-size: 12px;
-            color: #b0c4de;
-            margin-bottom: 12px;
-        }
-
-        .price {
-            font-size: 16px;
-            color: #00f0ff;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .rent {
-            width: 100%;
-            background: rgba(0, 240, 255, 0.2);
-            border: 1px solid #00f0ff;
-            color: white;
-            border-radius: 8px;
-            padding: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .rent:hover {
-            background: rgba(0, 240, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.7);
-        }
-
-        .footer-banner {
-            margin-top: 20px;
-            border-radius: 13px;
-            background: linear-gradient(90deg, rgba(3, 15, 30, 0.9), rgba(0, 240, 255, 0.2));
-            border: 1px solid rgba(0, 240, 255, 0.4);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-banner h3 {
-            font-size: 20px;
-            color: #00f0ff;
-        }
-
-        .footer-banner p {
-            font-size: 13px;
-            color: #b0c4de;
-        }
-
-        .floating-wa {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
-            z-index: 999;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .floating-wa:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.8);
-        }
-
-        .floating-chat {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #00f0ff;
-            color: #000;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.5);
-            z-index: 999;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .floating-chat:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.8);
-        }
-
-        /* ========================================================= */
-        /* 1. STYLING OVERLAY & MODAL UMUM (PAS DI TENGAH LAYAR)     */
-        /* ========================================================= */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            z-index: 9999;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            
-            /* DUA BARIS INI MEMAKSA MODAL BIASA PAS DI TENGAH LAYAR */
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: rgba(3, 15, 30, 0.98);
-            border: 2px solid #00f0ff;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
-            border-radius: 16px;
-            padding: 22px 18px;
-            position: relative;
-            margin: 0 auto !important; /* Menghilangkan efek margin atas */
-            width: 85%;
-            max-width: 340px;
-            text-align: center;
-            box-sizing: border-box;
-            height: auto !important;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: modalPop 0.3s ease-out;
-        }
-
-
-        @keyframes modalPop {
-            0% { transform: scale(0.85); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-content h3 {
-            margin-top: 0;
-            color: #00f0ff;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .modal-content p {
-            font-size: 0.8rem;
-            color: #b0c4de;
-            margin-bottom: 15px;
-        }
-
-        .modal-btn {
-            display: block;
-            width: fit-content;
-            margin: 0 auto 8px auto;
-            background: rgba(0, 240, 255, 0.2);
-            border: 1px solid #00f0ff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .modal-btn:hover {
-            background: rgba(0, 240, 255, 0.5);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
-
-        /* ========================================================= */
-        /* FIX MODAL CHAT: RESPONSIVE HP & DESKTOP MODE              */
-        /* ========================================================= */
-        #chatModal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            z-index: 9999;
-            flex-direction: column;
-            justify-content: flex-end; /* Mode HP (Default): Rapat di bawah */
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Tampilan Mode HP / Layar Kecil (Tetap Bottom Sheet) */
-        #chatModal .modal-content {
-            margin: 0 !important;
-            width: 100% !important;
-            max-width: 480px !important;
-            height: 75vh !important;
-            max-height: 80vh !important;
-            border-bottom: none;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-            padding: 16px 14px 18px 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        /* Tampilan Khusus Mode Situs Desktop / PC (Auto Pop-up di Tengah) */
+        #chatModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 9999; flex-direction: column; justify-content: flex-end; align-items: center; overflow: hidden; }
+        #chatModal .modal-content { margin: 0 !important; width: 100% !important; max-width: 480px !important; height: 75vh !important; max-height: 80vh !important; border-bottom: none; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding: 16px 14px 18px 14px; display: flex; flex-direction: column; justify-content: space-between; animation: slideUp 0.3s ease-out; }
         @media (min-width: 768px) {
-            #chatModal {
-                justify-content: center !important; /* Pindah posisi modal ke tengah vertikal */
-            }
-
-            #chatModal .modal-content {
-                width: 90% !important;
-                max-width: 500px !important;   /* Lebar pas tidak terlalu kurus */
-                height: 600px !important;      /* Tinggi terkunci, tidak memanjang ke atas */
-                max-height: 85vh !important;
-                border-radius: 16px !important; /* Sudut membulat rapi */
-                border: 2px solid #00f0ff !important;
-                box-shadow: 0 0 30px rgba(0, 240, 255, 0.5) !important;
-                animation: modalPop 0.3s ease-out !important;
-            }
+            #chatModal { justify-content: center !important; }
+            #chatModal .modal-content { width: 90% !important; max-width: 500px !important; height: 600px !important; max-height: 85vh !important; border-radius: 16px !important; border: 2px solid #00f0ff !important; box-shadow: 0 0 30px rgba(0, 240, 255, 0.5) !important; animation: modalPop 0.3s ease-out !important; }
         }
-
-
-        @keyframes slideUp {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Kotak Chat yang Aman dari Potongan Tombol Input */
-        .chat-box {
-            flex: 1;
-            height: auto;
-            min-height: 150px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            background: #060b13;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 12px;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overscroll-behavior: contain;
-        }
-
-        .chat-bubble {
-            background: #0d1527;
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            border-radius: 10px;
-            padding: 10px;
-            max-width: 85%;
-            width: fit-content;
-            word-break: break-word;
-            position: relative;
-            text-align: left;
-        }
-
-        .chat-bubble.self {
-            align-self: flex-end;
-            background: #0f2338;
-            border-color: rgba(0, 240, 255, 0.4);
-        }
-
-        .chat-sender {
-            font-size: 11px;
-            color: #00f0ff;
-            font-weight: bold;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        .chat-text {
-            font-size: 12px;
-            color: #ffffff;
-            line-height: 1.4;
-        }
-
-        .chat-img-preview {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 5px;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            cursor: pointer;
-        }
-
-        .chat-time {
-            font-size: 9px;
-            color: #6c7a89;
-            text-align: right;
-            margin-top: 4px;
-            display: block;
-        }
-
-        .chat-input-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #060b13;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 25px;
-            padding: 5px 8px 5px 12px;
-            flex-shrink: 0;
-        }
-
-        .chat-input-bar input[type="text"] {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #fff;
-            font-size: 12px;
-        }
-
-        .btn-icon-chat {
-            background: transparent;
-            border: none;
-            color: #00f0ff;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6px;
-            border-radius: 50%;
-            transition: 0.2s;
-        }
-
-        .btn-icon-chat:hover {
-            background: rgba(0, 240, 255, 0.2);
-        }
-
-        .btn-send-chat {
-            background: #00f0ff;
-            color: #000;
-            border: none;
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        @media(max-width: 800px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-            .car-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media(max-width: 550px) {
-            .navbar {
-                flex-wrap: wrap;
-            }
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            .car-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-banner {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-        }
+        @keyframes slideUp { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+        .chat-box { flex: 1; height: auto; min-height: 150px; overflow-y: auto; background: #060b13; border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 12px; padding: 10px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 10px; }
+        .chat-bubble { background: #0d1527; border: 1px solid rgba(0, 240, 255, 0.15); border-radius: 10px; padding: 10px; max-width: 85%; width: fit-content; word-break: break-word; text-align: left; }
+        .chat-bubble.self { align-self: flex-end; background: #0f2338; border-color: rgba(0, 240, 255, 0.4); }
+        .chat-sender { font-size: 11px; color: #00f0ff; font-weight: bold; margin-bottom: 4px; display: block; }
+        .chat-text { font-size: 12px; color: #ffffff; line-height: 1.4; }
+        .chat-img-preview { max-width: 100%; border-radius: 8px; margin-top: 5px; border: 1px solid rgba(0, 240, 255, 0.3); cursor: pointer; }
+        .chat-time { font-size: 9px; color: #6c7a89; text-align: right; margin-top: 4px; display: block; }
+        .chat-input-bar { display: flex; align-items: center; gap: 8px; background: #060b13; border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 25px; padding: 5px 8px 5px 12px; flex-shrink: 0; }
+        .chat-input-bar input[type="text"] { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-size: 12px; }
+        .btn-icon-chat { background: transparent; border: none; color: #00f0ff; cursor: pointer; font-size: 16px; padding: 6px; border-radius: 50%; }
+        .btn-send-chat { background: #00f0ff; color: #000; border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; flex-shrink: 0; }
+        @media(max-width: 800px) { .content { grid-template-columns: 1fr; } .car-grid { grid-template-columns: 1fr 1fr; } }
+        @media(max-width: 550px) { .navbar { flex-wrap: wrap; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; } .car-grid { grid-template-columns: 1fr; } .footer-banner { flex-direction: column; gap: 15px; text-align: center; } }
     </style>
 </head>
-
 <body>
 
 <div class="app">
 
-    <!-- NAVBAR -->
     <header class="navbar">
         <div class="logo">
             <span class="logo-icon">☣️</span>
@@ -771,17 +112,7 @@
 
         <div class="user">ZS</div>
     </header>
-    
-    <!-- OVERLAY TAMPILAN MAINTENANCE / OFFLINE -->
-    <div id="offlineOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #030712; z-index: 99999; justify-content: center; align-items: center; text-align: center; padding: 20px;">
-        <div style="border: 2px solid #ff4444; border-radius: 16px; padding: 30px; background: rgba(3, 15, 30, 0.95); max-width: 400px; box-shadow: 0 0 30px rgba(255, 68, 68, 0.5);">
-            <h1 style="color: #ff4444; font-size: 40px; margin-bottom: 10px;">⚠️</h1>
-            <h2 style="color: #ff4444; margin-bottom: 10px;">WEBSITE OFFLINE</h2>
-            <p style="color: #b0c4de; font-size: 14px; line-height: 1.5;">Website sedang dalam perbaikan / maintenance sementara oleh Admin ZEE STORE. Silakan kembali lagi nanti!</p>
-        </div>
-    </div>
 
-    <!-- HERO SECTION DENGAN VIDEO BACKGROUND -->
     <section class="hero">
         <video class="hero-bg-video" autoplay muted loop playsinline>
             <source src="mata.mp4" type="video/mp4">
@@ -790,20 +121,12 @@
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
-            <h2>
-                Unlock Your<br>
-                <span>Game Experience</span>
-            </h2>
-            <p>
-                Akses script eksklusif, menu modding terbaik, dan hubungi admin dengan mudah di sini.
-            </p>
-            <button class="btn" onclick="scrollToCards()">
-                Jelajahi Menu ➜
-            </button>
+            <h2>Unlock Your<br><span>Game Experience</span></h2>
+            <p>Akses script eksklusif, menu modding terbaik, dan hubungi admin dengan mudah di sini.</p>
+            <button class="btn" onclick="scrollToCards()">Jelajahi Menu ➜</button>
         </div>
     </section>
 
-    <!-- MAIN CONTENT -->
     <main class="main">
         <div class="section-title">
             <h2>Official Menu & Tools</h2>
@@ -813,16 +136,13 @@
             </select>
         </div>
 
-        <!-- SEARCH BAR -->
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="🔍 Cari menu, script, atau aplikasi..." onkeyup="searchCards()">
         </div>
 
         <div class="content">
-            <!-- SIDEBAR FILTERS -->
             <aside class="filters">
                 <h3>⚱ Filter Kategori</h3>
-
                 <div class="filter-title">Jenis Layanan</div>
                 <label class="checkbox"><input type="checkbox" checked value="script"> ⚡ Script MLBB</label>
                 <label class="checkbox"><input type="checkbox" checked value="token"> 🔑 Token VIP / Free</label>
@@ -832,146 +152,85 @@
 
                 <div class="filter-title">Status</div>
                 <label class="checkbox"><input type="checkbox" checked value="ready"> 🔥 Aktif / Ready</label>
-
-                <button class="apply" onclick="applyFilter()">
-                    ⚱ Terapkan Filter
-                </button>
+                <button class="apply" onclick="applyFilter()">⚱ Terapkan Filter</button>
             </aside>
 
-            <!-- CARD GRID -->
             <section class="car-grid" id="carGrid">
-
-                <!-- Card 1: Script By Zee -->
                 <div class="car-card" data-category="script" data-name="Script By Zee" data-price="1">
-                    <div class="car-image">
-                        ⚡
-                        <span class="badge">Eksklusif</span>
-                    </div>
+                    <div class="car-image">⚡<span class="badge">Eksklusif</span></div>
                     <h3>Script By Zee</h3>
-                    <div class="details">
-                        <span>📦 Status: Ready</span>
-                        <span>⭐ Update V2.0</span>
-                    </div>
+                    <div class="details"><span>📦 Status: Ready</span><span>⭐ Update V2.0</span></div>
                     <div class="price">Free / Premium</div>
-                    <button class="rent" onclick="openModal('scriptModal')">
-                        Akses Script
-                    </button>
+                    <button class="rent" onclick="openModal('scriptModal')">Akses Script</button>
                 </div>
 
-                <!-- Card Tambahan: Token Script (Beli & Free) -->
                 <div class="car-card" data-category="token" data-name="Token Script VIP & Free" data-price="2">
-                    <div class="car-image" style="background: rgba(0, 240, 255, 0.15);">
-                        🔑
-                        <span class="badge">Otomatis</span>
-                    </div>
+                    <div class="car-image" style="background: rgba(0, 240, 255, 0.15);">🔑<span class="badge">Otomatis</span></div>
                     <h3>Token Script VIP & Free</h3>
-                    <div class="details">
-                        <span>📦 Auto Save DB</span>
-                        <span>⭐ Durasi 12-60H</span>
-                    </div>
+                    <div class="details"><span>📦 Auto Save DB</span><span>⭐ Durasi 12-60H</span></div>
                     <div class="price">Rp 10.000 / Gratis</div>
-                    <button class="rent" onclick="openModal('tokenModal')">
-                        Ambil / Beli Token
-                    </button>
+                    <button class="rent" onclick="openModal('tokenModal')">Ambil / Beli Token</button>
                 </div>
 
-                <!-- Card 2: APK Modding -->
                 <div class="car-card" data-category="mod" data-name="APK Modding" data-price="3">
-                    <div class="car-image">
-                        🎮
-                        <span class="badge">Tools</span>
-                    </div>
+                    <div class="car-image">🎮<span class="badge">Tools</span></div>
                     <h3>APK Modding & GG</h3>
-                    <div class="details">
-                        <span>📦 Status: Tested</span>
-                        <span>⭐ Versi Terbaru</span>
-                    </div>
+                    <div class="details"><span>📦 Status: Tested</span><span>⭐ Versi Terbaru</span></div>
                     <div class="price">Download App</div>
-                    <button class="rent" onclick="openModal('ggModal')">
-                        Pilih Mod APK
-                    </button>
+                    <button class="rent" onclick="openModal('ggModal')">Pilih Mod APK</button>
                 </div>
 
-                <!-- Card 3: WhatsApp -->
                 <div class="car-card" data-category="wa" data-name="WhatsApp Admin" data-price="4">
                     <div class="car-image" style="background: rgba(37, 211, 102, 0.15);">
-                        <svg width="65" height="65" viewBox="0 0 24 24" fill="#25D366">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.893 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                        </svg>
+                        <svg width="65" height="65" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.893 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                         <span class="badge">Support</span>
                     </div>
                     <h3>WhatsApp Admin</h3>
-                    <div class="details">
-                        <span>📦 Respon: Cepat</span>
-                        <span>⭐ 24/7 Support</span>
-                    </div>
+                    <div class="details"><span>📦 Respon: Cepat</span><span>⭐ 24/7 Support</span></div>
                     <div class="price">Hubungi Admin</div>
-                    <button class="rent" onclick="openModal('waModal')">
-                        Chat WhatsApp
-                    </button>
+                    <button class="rent" onclick="openModal('waModal')">Chat WhatsApp</button>
                 </div>
 
-                <!-- Card 4: YouTube -->
                 <div class="car-card" data-category="yt" data-name="YouTube Channel" data-price="5">
                     <div class="car-image" style="background: rgba(255, 0, 0, 0.15);">
-                        <svg width="65" height="65" viewBox="0 0 24 24" fill="#FF0000">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
+                        <svg width="65" height="65" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         <span class="badge">Tutorial</span>
                     </div>
                     <h3>YouTube Channel</h3>
-                    <div class="details">
-                        <span>📦 Konten: Video</span>
-                        <span>⭐ Panduan Lengkap</span>
-                    </div>
+                    <div class="details"><span>📦 Konten: Video</span><span>⭐ Panduan Lengkap</span></div>
                     <div class="price">Tonton Video</div>
-                    <button class="rent" onclick="openModal('ytModal')">
-                        Buka YouTube
-                    </button>
+                    <button class="rent" onclick="openModal('ytModal')">Buka YouTube</button>
                 </div>
-
             </section>
         </div>
 
-        <!-- FOOTER BANNER -->
         <div class="footer-banner">
             <div>
                 <h3>🇮🇩 ZEE STORE OFFICIAL</h3>
                 <p>Aman, Cepat, dan Terpercaya untuk Kebutuhan Modding Anda.</p>
             </div>
-            <button class="btn" onclick="window.location.href='index2.html'">
-                Halaman FAQ ➜
-            </button>
+            <button class="btn" onclick="window.location.href='index2.html'">Halaman FAQ ➜</button>
         </div>
     </main>
 </div>
 
-<!-- TOMBOL FLOATING WA -->
 <a href="https://wa.me/6281330549762?text=Halo%20Admin%20Zee%20Store,%20saya%20butuh%20bantuan" class="floating-wa" target="_blank" title="Chat Admin WhatsApp">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.893 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-    </svg>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.893 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
 </a>
 
-<!-- TOMBOL FLOATING CHAT MEMBER -->
-<div class="floating-chat" onclick="openModal('chatModal')" title="Komentar Member">
-    💬
-</div>
+<div class="floating-chat" onclick="openModal('chatModal')" title="Komentar Member">💬</div>
 
-<!-- MODAL CHATROOM MEMBER -->
+<!-- MODAL CHATROOM -->
 <div id="chatModal" class="modal">
     <div class="modal-content">
         <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
-        
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
             <span style="font-size: 18px; color: #00f0ff;">💬</span>
             <h3 style="margin: 0; font-size: 16px; letter-spacing: 1px;">CHAT</h3>
         </div>
-
         <div class="chat-box" id="chatContainer">
             <p style="font-size:11px; color:#b0c4de; text-align:center;">Memuat komentar...</p>
         </div>
-
         <div style="margin-bottom: 8px;">
             <div id="nameInputWrapper">
                 <input type="text" id="chatName" placeholder="Masukkan Nama Kamu..." style="width:100%; padding:8px 12px; background:#060b13; border:1px solid rgba(0,240,255,0.3); color:#fff; border-radius:8px; font-size:11px;">
@@ -981,12 +240,10 @@
                 <button onclick="resetMemberName()" style="background:none; border:none; color:#ff4444; font-size:10px; cursor:pointer; text-decoration:underline;">Ganti Nama</button>
             </div>
         </div>
-
         <div id="imagePreviewContainer" style="display:none; position:relative; margin-bottom:8px;">
             <img id="imagePreview" src="" style="max-height:80px; border-radius:6px; border:1px solid #00f0ff;">
             <button onclick="clearImageSelection()" style="position:absolute; top:0; background:red; color:#fff; border:none; border-radius:50%; width:18px; height:18px; font-size:10px; cursor:pointer;">&times;</button>
         </div>
-
         <div class="chat-input-bar">
             <input type="file" id="chatImageInput" accept="image/*" style="display:none;" onchange="handleImageSelect(event)">
             <button class="btn-icon-chat" onclick="document.getElementById('chatImageInput').click()" title="Kirim Foto">🖼️</button>
@@ -996,7 +253,7 @@
     </div>
 </div>
 
-<!-- MODAL TOKEN SCRIPT -->
+<!-- MODAL TOKEN -->
 <div id="tokenModal" class="modal">
     <div class="modal-content">
         <button class="close-btn" onclick="closeModal('tokenModal')">&times;</button>
@@ -1069,6 +326,7 @@
 </div>
 
 <script>
+    const DB_BASE_URL = "https://token-pengguna-default-rtdb.asia-southeast1.firebasedatabase.app";
     let currentDeviceId = "";
     let selectedImageData = null;
 
@@ -1078,18 +336,13 @@
 
     function openModal(modalId) {
         playCyberClick('modal');
-        
-        // Membuka modal dengan flex agar perata tengah CSS berfungsi
         document.getElementById(modalId).style.display = 'flex';
-        
         if (modalId === 'chatModal') {
             checkSavedMemberName();
             loadMemberChats();
         }
-        
         document.body.style.overflow = 'hidden';
     }
-
 
     function closeModal(modalId) {
         playCyberClick();
@@ -1111,7 +364,6 @@
         document.getElementById("carGrid").scrollIntoView({ behavior: "smooth" });
     }
 
-    // --- KONTROL GAMBAR CHAT ---
     function handleImageSelect(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -1150,20 +402,15 @@
         document.getElementById('imagePreviewContainer').style.display = 'none';
     }
 
-    // --- CHATROOM MEMBER ---
     function checkSavedMemberName() {
         const savedName = localStorage.getItem('zee_member_name');
-        const nameInputWrapper = document.getElementById('nameInputWrapper');
-        const savedNameDisplay = document.getElementById('savedNameDisplay');
-        const displayMemberName = document.getElementById('displayMemberName');
-
         if (savedName) {
-            nameInputWrapper.style.display = 'none';
-            savedNameDisplay.style.display = 'flex';
-            displayMemberName.innerText = savedName;
+            document.getElementById('nameInputWrapper').style.display = 'none';
+            document.getElementById('savedNameDisplay').style.display = 'flex';
+            document.getElementById('displayMemberName').innerText = savedName;
         } else {
-            nameInputWrapper.style.display = 'block';
-            savedNameDisplay.style.display = 'none';
+            document.getElementById('nameInputWrapper').style.display = 'block';
+            document.getElementById('savedNameDisplay').style.display = 'none';
         }
     }
 
@@ -1187,7 +434,6 @@
                 container.innerHTML = data.chats.map(chat => {
                     const isSelf = mySavedName && chat.name === mySavedName;
                     const imageTag = chat.image ? `<br><img src="${chat.image}" class="chat-img-preview" onclick="window.open('${chat.image}')">` : '';
-                    
                     return `
                         <div class="chat-bubble ${isSelf ? 'self' : ''}">
                             <span class="chat-sender">${chat.name}</span>
@@ -1207,11 +453,9 @@
 
     async function sendMemberChat() {
         let name = localStorage.getItem('zee_member_name');
-
         if (!name) {
             name = document.getElementById('chatName').value.trim();
             if (!name) return alert("Masukkan nama kamu terlebih dahulu!");
-            
             localStorage.setItem('zee_member_name', name);
             checkSavedMemberName();
         }
@@ -1223,11 +467,7 @@
             const res = await fetch('https://zee-backend-black.vercel.app/api/send-chat', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ 
-                    name: name, 
-                    message: message,
-                    image: selectedImageData 
-                })
+                body: JSON.stringify({ name: name, message: message, image: selectedImageData })
             });
             const data = await res.json();
 
@@ -1243,7 +483,6 @@
         }
     }
 
-    // --- RIWAYAT TOKEN ---
     function saveTokenToHistory(token, expired, type = "Free/Paid") {
         let history = JSON.parse(localStorage.getItem('zee_token_history')) || [];
         const exists = history.some(item => item.token === token);
@@ -1291,25 +530,16 @@
     function fallbackCopyTextToClipboard(text) {
         const textArea = document.createElement("textarea");
         textArea.value = text;
-        textArea.style.top = "0";
-        textArea.style.left = "0";
-        textArea.style.position = "fixed";
+        textArea.style.top = "0"; textArea.style.left = "0"; textArea.style.position = "fixed";
         document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
+        textArea.focus(); textArea.select();
         try {
-            if (document.execCommand('copy')) {
-                alert("Token berhasil disalin!");
-            } else {
-                alert("Gagal menyalin token.");
-            }
-        } catch (err) {
-            alert("Browser tidak mendukung salin otomatis.");
-        }
+            if (document.execCommand('copy')) alert("Token berhasil disalin!");
+            else alert("Gagal menyalin token.");
+        } catch (err) { alert("Browser tidak mendukung salin otomatis."); }
         document.body.removeChild(textArea);
     }
 
-    // --- FITUR FILTER & SORT ---
     function searchCards() {
         const input = document.getElementById('searchInput').value.toLowerCase();
         const cards = document.querySelectorAll('.car-card');
@@ -1348,7 +578,6 @@
         cards.forEach(card => grid.appendChild(card));
     }
 
-    // --- TRANSAKSI TOKEN ---
     function bayarQRIS() {
         document.getElementById("qrisResult").innerHTML = `
             <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; padding: 12px; border-radius: 8px; margin-top: 10px;">
@@ -1401,11 +630,25 @@
         }
     }
 
+    // FUNGSI KLAIM FREE DENGAN LOGIKA SAKLAR FIREBASE
     async function klaimFree() {
         if (!currentDeviceId) return alert("tunggu sebentar.....");
         document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
 
         try {
+            // Cek saklar terlebih dahulu dari Realtime Database
+            const statusRes = await fetch(`${DB_BASE_URL}/settings/free_claim_status.json`);
+            const claimStatus = await statusRes.json();
+
+            if (claimStatus === "off") {
+                document.getElementById("freeResult").innerHTML = `
+                    <p style="color:#ff4444; font-size:11px; font-weight:bold; margin-top:5px;">
+                        ⚠️ Fitur Klaim Token Gratis sedang dimatikan oleh Admin.
+                    </p>
+                `;
+                return;
+            }
+
             const res = await fetch('https://zee-backend-black.vercel.app/api/claim-free', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -1431,27 +674,17 @@
         }
     }
 
-    // --- AUDIO UI ---
     const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
     const modalSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
     const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3');
 
-    clickSound.volume = 0.3;
-    modalSound.volume = 0.4;
-    successSound.volume = 0.4;
+    clickSound.volume = 0.3; modalSound.volume = 0.4; successSound.volume = 0.4;
 
     function playCyberClick(type = 'default') {
         try {
-            if (type === 'modal') {
-                modalSound.currentTime = 0;
-                modalSound.play().catch(() => {});
-            } else if (type === 'success') {
-                successSound.currentTime = 0;
-                successSound.play().catch(() => {});
-            } else {
-                clickSound.currentTime = 0;
-                clickSound.play().catch(() => {});
-            }
+            if (type === 'modal') { modalSound.currentTime = 0; modalSound.play().catch(() => {}); }
+            else if (type === 'success') { successSound.currentTime = 0; successSound.play().catch(() => {}); }
+            else { clickSound.currentTime = 0; clickSound.play().catch(() => {}); }
         } catch (e) {}
     }
 
@@ -1461,9 +694,7 @@
             button.addEventListener('click', () => playCyberClick());
         });
     });
-</script>
-<script>
-    // Memasang Service Worker Monetag untuk Push Notification
+
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
@@ -1471,33 +702,6 @@
                 .catch(err => console.error('Monetag SW Failed:', err));
         });
     }
-    const DB_BASE_URL = "https://token-pengguna-default-rtdb.asia-southeast1.firebasedatabase.app";
-
-    async function checkWebsiteStatus() {
-        try {
-            const res = await fetch(`${DB_BASE_URL}/settings/status.json`);
-            const status = await res.json();
-        
-            if (status === "offline") {
-                // Tampilkan layar offline & matikan scroll halaman
-                document.getElementById("offlineOverlay").style.display = "flex";
-                document.body.style.overflow = "hidden";
-            } else {
-                // Sembunyikan layar offline jika status online
-                document.getElementById("offlineOverlay").style.display = "none";
-                document.body.style.overflow = "auto";
-            }
-        } catch (e) {
-            console.error("Gagal mengecek status website:", e);
-        }
-    }
-
-// Cek status langsung saat halaman dibuka
-checkWebsiteStatus();
-
-// Cek otomatis setiap 5 detik agar saklar berubah secara real-time
-setInterval(checkWebsiteStatus, 5000);
-
 </script>
 </body>
 </html>
