@@ -326,7 +326,7 @@
 </div>
 
 <script>
-    const DB_BASE_URL = "https://keypengguna-default-rtdb.asia-southeast1.firebasedatabase.app/";
+    const DB_BASE_URL = "https://keypengguna-default-rtdb.asia-southeast1.firebasedatabase.app";
     let currentDeviceId = "";
     let selectedImageData = null;
 
@@ -433,7 +433,9 @@
             if (data.success && data.chats.length > 0) {
                 container.innerHTML = data.chats.map(chat => {
                     const isSelf = mySavedName && chat.name === mySavedName;
-                    const imageTag = chat.image ? `<br><img src="${chat.image}" class="chat-img-preview" onclick="window.open('${chat.image}')">` : '';
+                    const imageTag = chat.image 
+                        ? `<br><img src="${chat.image}" class="chat-img-preview" onclick="const w = window.open(''); w.document.write('<img src=\\'${chat.image}\\' style=\\'max-width:100%\\'>');">` 
+                        : '';
                     return `
                         <div class="chat-bubble ${isSelf ? 'self' : ''}">
                             <span class="chat-sender">${chat.name}</span>
@@ -574,6 +576,8 @@
         const cards = Array.from(grid.querySelectorAll(".car-card"));
         if (value === "nameAsc") {
             cards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+        } else {
+            cards.sort((a, b) => Number(a.dataset.price) - Number(b.dataset.price));
         }
         cards.forEach(card => grid.appendChild(card));
     }
@@ -594,7 +598,7 @@
     }
 
     function bukaSaweria() {
-        const nama = document.getElementById("buyerInput").value;
+        const nama = document.getElementById("buyerInput").value.trim();
         if (!nama) return alert("Isi Nama Pembeli terlebih dahulu!");
         window.open(`https://saweria.co/ZeeStore02`, '_blank');
     }
@@ -630,14 +634,12 @@
         }
     }
 
-    // FUNGSI KLAIM FREE DENGAN LOGIKA SAKLAR FIREBASE
     async function klaimFree() {
         if (!currentDeviceId) return alert("tunggu sebentar.....");
         document.getElementById("freeResult").innerHTML = "<p style='font-size:12px; color:#00f0ff;'>Memproses klaim...</p>";
 
         try {
-            // Cek saklar dari Realtime Database
-            const statusRes = await fetch(`${DB_BASE_URL}/settings/free_claim_status.json`);
+            const statusRes = await fetch(`${DB_BASE_URL}/settings/free_claim_status.json?t=${Date.now()}`);
             const claimStatus = await statusRes.json();
 
             if (claimStatus === "off") {
